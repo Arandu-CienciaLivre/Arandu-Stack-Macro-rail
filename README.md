@@ -40,25 +40,21 @@ As funcionalidades podem sofrer alterações entre diferentes versões do firmwa
 
 ## Estrutura do sistema
 
-O equipamento é composto por três conjuntos principais:
+O Arandu Stack Macro Rail foi desenvolvido a partir da integração e adaptação de componentes eletrônicos e mecânicos comerciais, coordenados por um firmware desenvolvido especificamente para o sistema.
 
-### Mecânica
+Essa abordagem permite construir o equipamento utilizando componentes amplamente disponíveis, reduzindo custos e facilitando sua reprodução, manutenção e adaptação.
 
-A estrutura mecânica é responsável pelo deslocamento linear preciso da câmera e utiliza um motor de passo associado a um sistema de transmissão por fuso.
+### Componentes e montagem
 
-O projeto foi pensado para permitir construção com componentes comerciais facilmente encontrados e possibilitar adaptações de acordo com os materiais e equipamentos disponíveis.
+O sistema utiliza módulos eletrônicos, elementos mecânicos e componentes comerciais selecionados e integrados para formar o trilho automatizado.
 
-### Eletrônica
-
-O sistema eletrônico realiza o controle do motor, leitura dos comandos do usuário, monitoramento do equipamento e acionamento da câmera.
-
-Os esquemas, conexões e demais informações necessárias para reprodução da eletrônica serão disponibilizados neste repositório.
+A documentação do projeto apresenta os componentes utilizados, suas conexões, adaptações e procedimentos de montagem necessários para reproduzir o sistema.
 
 ### Firmware
 
-O firmware controla a interface, movimentação do motor, armazenamento dos parâmetros de operação e execução automática das sequências fotográficas.
+O firmware do Arandu Stack Macro Rail foi desenvolvido especificamente para controlar o funcionamento integrado do equipamento.
 
-O código-fonte é disponibilizado para permitir estudo, modificação e desenvolvimento de novas funcionalidades.
+Ele é responsável pela interface com o usuário, controle de movimento, configuração dos parâmetros de operação, acionamento da câmera e execução das sequências automatizadas.
 
 ## Aplicações
 
@@ -89,11 +85,10 @@ Arandu-Stack-Macro-Rail/
 │
 ├── firmware/
 │
-├── hardware/
-│
-├── mechanical/
-│
 ├── docs/
+│   ├── assembly/
+│   ├── wiring/
+│   └── user-guide/
 │
 └── images/
 ```
@@ -102,18 +97,9 @@ Arandu-Stack-Macro-Rail/
 
 Código-fonte utilizado no controle do equipamento.
 
-### `hardware/`
-
-Esquemas eletrônicos, placas, diagramas de conexão e demais arquivos relacionados à eletrônica.
-
-### `mechanical/`
-
-Desenhos, medidas, peças e arquivos relacionados à construção mecânica do trilho.
-
 ### `docs/`
 
-Documentação complementar, instruções de montagem, configuração, operação e manutenção.
-
+Documentação técnica do projeto, incluindo lista de componentes, instruções de montagem, adaptações mecânicas, conexões elétricas, configuração, operação e manutenção.
 ### `images/`
 
 Fotografias, diagramas e imagens utilizadas na documentação do projeto.
@@ -155,6 +141,14 @@ Forma de citação acadêmica:
 
 Currículo Lattes:
 http://lattes.cnpq.br/1385276444101459
+
+### Escopo da autoria
+
+O Arandu Stack Macro Rail utiliza componentes eletrônicos e mecânicos comerciais de diferentes fabricantes.
+
+A autoria atribuída neste repositório refere-se ao desenvolvimento do sistema Arandu Stack Macro Rail, incluindo sua integração, adaptações desenvolvidas para sua implementação, firmware e documentação original.
+
+Os direitos sobre componentes, módulos, bibliotecas e projetos de terceiros permanecem pertencentes aos seus respectivos autores e fabricantes.
 
 ## Como citar
 
