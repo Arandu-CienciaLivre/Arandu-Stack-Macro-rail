@@ -20,19 +20,23 @@ O movimento é produzido por um motor de passo **NEMA 17** acoplado ao fuso. A c
 
 A montagem utilizada no projeto também inclui uma adaptação construída a partir de uma **caixa elétrica de alumínio 4×2"**, utilizada para a integração mecânica entre o motor e o conjunto do trilho.
 
+![Visão geral do conjunto montado](images/rail-assembly-overview.jpg)
+
+*Visão geral do Arandu Stack Macro Rail montado.*
+
 ## 2. Principais componentes mecânicos
 
 Os principais componentes utilizados nesta montagem são:
 
-* atuador linear C-Beam de 250 mm;
-* fuso trapezoidal T8×2;
-* carro móvel do conjunto C-Beam;
-* motor de passo NEMA 17;
-* acoplador flexível fornecido com o conjunto C-Beam;
-* bucha de cobre de aproximadamente 1 mm de espessura;
-* caixa elétrica de alumínio 4×2";
-* placa de liberação rápida Ulanzi U-KA2;
-* parafusos, arruelas e demais elementos de fixação necessários à montagem.
+- atuador linear C-Beam de 250 mm;
+- fuso trapezoidal T8×2;
+- carro móvel do conjunto C-Beam;
+- motor de passo NEMA 17;
+- acoplador flexível fornecido com o conjunto C-Beam;
+- bucha de cobre de aproximadamente 1 mm de espessura;
+- caixa elétrica de alumínio 4×2";
+- placa de liberação rápida Ulanzi U-KA2;
+- parafusos, arruelas e demais elementos de fixação necessários à montagem.
 
 A lista geral de componentes do projeto está disponível em [`../materials.md`](../materials.md).
 
@@ -44,9 +48,9 @@ A versão utilizada possui comprimento nominal de **250 mm** e aproximadamente *
 
 O sistema de transmissão utiliza um fuso trapezoidal **T8×2**, com:
 
-* diâmetro nominal de 8 mm;
-* passo de 2 mm;
-* avanço de 2 mm por revolução.
+- diâmetro nominal de 8 mm;
+- passo de 2 mm;
+- avanço de 2 mm por revolução.
 
 O carro móvel se desloca longitudinalmente sobre o perfil C-Beam e constitui a superfície sobre a qual é instalado o sistema de fixação da câmera.
 
@@ -58,6 +62,10 @@ O movimento do trilho é realizado por um motor de passo **NEMA 17**.
 
 Para integrar o motor ao conjunto C-Beam foi utilizada uma **caixa elétrica de alumínio 4×2"**, modificada para funcionar como estrutura de suporte e proteção do sistema de acoplamento.
 
+![Conjunto do motor e caixa de acoplamento](images/motor-enclosure-side.jpg)
+
+*Motor NEMA 17 instalado sobre a caixa de alumínio 4×2" utilizada na adaptação mecânica.*
+
 ### 4.1 Fixação da caixa ao trilho
 
 A caixa de alumínio foi posicionada sobre a extremidade do C-Beam e centralizada em relação ao eixo do fuso.
@@ -68,11 +76,19 @@ Após a furação, a caixa foi fixada ao conjunto utilizando os **próprios para
 
 Esse método permite utilizar a própria geometria do conjunto C-Beam como referência para o posicionamento da caixa, sem depender de um gabarito específico de furação.
 
+![Fixação do conjunto do motor ao trilho](images/motor-mount-front.jpg)
+
+*Detalhe da montagem da caixa de alumínio na extremidade do conjunto C-Beam.*
+
 ### 4.2 Fixação e centralização do motor
 
 O NEMA 17 foi posicionado sobre a face oposta da caixa, com seu eixo aproximadamente alinhado ao eixo do fuso T8×2.
 
 Foi realizada uma abertura com folga ao redor da passagem do eixo do motor. Essa folga permite pequenos ajustes de posição durante a montagem, facilitando a centralização do eixo do motor em relação ao fuso.
+
+![Ajuste de alinhamento do motor](images/motor-shaft-alignment.jpg)
+
+*Folga na abertura de montagem utilizada para permitir pequenos ajustes de posicionamento e centralização do motor.*
 
 O motor foi fixado à caixa utilizando parafusos e **arruelas**. As arruelas auxiliam na fixação e permitem o ajuste do conjunto durante o processo de alinhamento.
 
@@ -90,6 +106,18 @@ A sequência de transmissão utilizada no sistema é:
 
 **NEMA 17 → bucha de cobre → acoplador flexível → fuso T8×2**
 
+![Visão interna do acoplamento](images/coupler-internal-view-01.jpg)
+
+*Visão interna da caixa mostrando o sistema de acoplamento entre o motor e o fuso.*
+
+![Detalhe do acoplador](images/coupler-internal-view-02.jpg)
+
+*Detalhe do acoplador flexível instalado entre o eixo do motor e o fuso T8×2.*
+
+![Conjunto de acoplamento e conexões](images/coupler-and-wiring.jpg)
+
+*Vista interna do conjunto mostrando o acoplamento e parte das conexões elétricas.*
+
 A bucha permite o encaixe adequado do eixo no acoplador e a transmissão do movimento do motor para o fuso.
 
 A necessidade e as dimensões dessa adaptação podem variar caso sejam utilizados motores ou acopladores com dimensões diferentes.
@@ -104,9 +132,27 @@ O motor deve ser inicialmente instalado sem o aperto definitivo dos parafusos. A
 
 Após a centralização, os parafusos de fixação do motor e do acoplador podem ser apertados.
 
+![Visão geral do acoplamento do motor](images/motor-coupling-overview.jpg)
+
+*Visão geral do conjunto motor, caixa de adaptação e C-Beam após a montagem.*
+
+### 4.5 Conectores do conjunto
+
+A caixa de adaptação também serve como ponto de instalação dos conectores utilizados para a interligação elétrica entre o conjunto do trilho e o módulo de controle.
+
+![Conectores instalados na caixa](images/enclosure-connectors.jpg)
+
+*Conectores instalados na caixa de adaptação para interligação entre o trilho e o módulo de controle.*
+
+A função e a pinagem desses conectores são descritas separadamente na documentação elétrica do projeto.
+
 ## 5. Fixação da câmera
 
 A câmera é instalada sobre o carro móvel do C-Beam utilizando uma placa de liberação rápida **Ulanzi U-KA2**.
+
+![Sistema de liberação rápida da câmera](images/camera-quick-release.jpg)
+
+*Placa de liberação rápida Ulanzi U-KA2 instalada sobre o carro móvel do trilho.*
 
 A base do sistema de liberação rápida é fixada diretamente sobre a placa do carro do trilho.
 
@@ -120,18 +166,18 @@ Antes de conectar e operar o sistema eletrônico, deve-se verificar manualmente 
 
 Verifique:
 
-* fixação da caixa de alumínio ao C-Beam;
-* fixação do motor NEMA 17;
-* alinhamento entre o eixo do motor e o fuso;
-* posicionamento da bucha de cobre;
-* fixação do acoplador;
-* ausência de deformação lateral excessiva do acoplador;
-* rotação livre do fuso;
-* movimentação livre do carro;
-* ausência de pontos de travamento ao longo do curso;
-* fixação do sistema de liberação rápida;
-* estabilidade da câmera sobre o carro;
-* aperto dos elementos de fixação.
+- fixação da caixa de alumínio ao C-Beam;
+- fixação do motor NEMA 17;
+- alinhamento entre o eixo do motor e o fuso;
+- posicionamento da bucha de cobre;
+- fixação do acoplador;
+- ausência de deformação lateral excessiva do acoplador;
+- rotação livre do fuso;
+- movimentação livre do carro;
+- ausência de pontos de travamento ao longo do curso;
+- fixação do sistema de liberação rápida;
+- estabilidade da câmera sobre o carro;
+- aperto dos elementos de fixação.
 
 Caso seja percebido aumento de resistência ou irregularidade durante o movimento, o alinhamento do motor deve ser verificado novamente.
 
@@ -145,12 +191,12 @@ O projeto utiliza esses componentes como base para a construção do sistema.
 
 A integração mecânica realizada para esta versão inclui, entre outras adaptações:
 
-* utilização da caixa elétrica de alumínio 4×2" como suporte do motor e proteção do acoplamento;
-* adaptação da caixa aos pontos de fixação existentes no C-Beam;
-* abertura com folga para permitir o ajuste de alinhamento do motor;
-* utilização de arruelas para auxiliar na montagem e ajuste;
-* utilização de uma bucha de cobre para compatibilizar o eixo do motor com o acoplador;
-* integração da placa de liberação rápida ao carro do trilho.
+- utilização da caixa elétrica de alumínio 4×2" como suporte do motor e proteção do acoplamento;
+- adaptação da caixa aos pontos de fixação existentes no C-Beam;
+- abertura com folga para permitir o ajuste de alinhamento do motor;
+- utilização de arruelas para auxiliar na montagem e ajuste;
+- utilização de uma bucha de cobre para compatibilizar o eixo do motor com o acoplador;
+- integração da placa de liberação rápida ao carro do trilho.
 
 Essas adaptações, juntamente com a configuração do conjunto e sua integração ao firmware e sistema eletrônico do **Arandu Stack Macro Rail**, são documentadas neste repositório para facilitar a reprodução, estudo e modificação do equipamento.
 
@@ -168,19 +214,23 @@ Movement is provided by a **NEMA 17 stepper motor** coupled to the lead screw. T
 
 The project also uses an adapted **4×2" aluminum electrical box** as part of the mechanical integration between the motor and the linear rail assembly.
 
+![Overview of the assembled system](images/rail-assembly-overview.jpg)
+
+*Overview of the assembled Arandu Stack Macro Rail.*
+
 ## 2. Main Mechanical Components
 
 The main mechanical components used in this assembly are:
 
-* 250 mm C-Beam linear actuator;
-* T8×2 lead screw;
-* C-Beam moving carriage;
-* NEMA 17 stepper motor;
-* flexible coupler supplied with the C-Beam assembly;
-* approximately 1 mm thick copper bushing;
-* 4×2" aluminum electrical box;
-* Ulanzi U-KA2 quick-release plate;
-* screws, washers, and other mounting hardware required for assembly.
+- 250 mm C-Beam linear actuator;
+- T8×2 lead screw;
+- C-Beam moving carriage;
+- NEMA 17 stepper motor;
+- flexible coupler supplied with the C-Beam assembly;
+- approximately 1 mm thick copper bushing;
+- 4×2" aluminum electrical box;
+- Ulanzi U-KA2 quick-release plate;
+- screws, washers, and other mounting hardware required for assembly.
 
 The complete project component list is available in [`../materials.md`](../materials.md).
 
@@ -192,9 +242,9 @@ The version used has a nominal length of **250 mm** and approximately **150 mm o
 
 The transmission system uses a **T8×2 trapezoidal lead screw** with:
 
-* 8 mm nominal diameter;
-* 2 mm pitch;
-* 2 mm linear travel per revolution.
+- 8 mm nominal diameter;
+- 2 mm pitch;
+- 2 mm linear travel per revolution.
 
 The moving carriage travels longitudinally along the C-Beam profile and provides the mounting surface for the camera attachment system.
 
@@ -206,6 +256,10 @@ Rail movement is provided by a **NEMA 17 stepper motor**.
 
 A modified **4×2" aluminum electrical box** is used to mechanically integrate the motor with the C-Beam assembly and protect the coupling system.
 
+![Motor and coupling enclosure assembly](images/motor-enclosure-side.jpg)
+
+*NEMA 17 motor installed on the 4×2" aluminum enclosure used for the mechanical adaptation.*
+
 ### 4.1 Attaching the Enclosure to the Rail
 
 The aluminum enclosure was positioned at the end of the C-Beam and centered relative to the lead screw axis.
@@ -216,11 +270,19 @@ After drilling, the enclosure was attached to the assembly using the **rail's or
 
 This method uses the C-Beam assembly itself as a positioning reference and does not require a separate drilling template.
 
+![Rail and motor enclosure mounting](images/motor-mount-front.jpg)
+
+*Detail of the aluminum enclosure mounted at the end of the C-Beam assembly.*
+
 ### 4.2 Motor Mounting and Alignment
 
 The NEMA 17 was positioned on the opposite face of the enclosure, with its shaft approximately aligned with the T8×2 lead screw axis.
 
 An opening with additional clearance around the motor shaft was made in the enclosure. This clearance allows small positional adjustments during assembly, making it easier to center the motor shaft relative to the lead screw.
+
+![Motor alignment adjustment](images/motor-shaft-alignment.jpg)
+
+*Clearance around the mounting opening allows small positional adjustments for motor alignment.*
 
 The motor was secured to the enclosure using screws and **washers**. The washers assist with mounting and allow adjustment during the alignment process.
 
@@ -238,6 +300,18 @@ The resulting transmission arrangement is:
 
 **NEMA 17 → copper bushing → flexible coupler → T8×2 lead screw**
 
+![Internal view of the coupling](images/coupler-internal-view-01.jpg)
+
+*Internal view of the enclosure showing the coupling system between the motor and lead screw.*
+
+![Flexible coupler detail](images/coupler-internal-view-02.jpg)
+
+*Detail of the flexible coupler installed between the motor shaft and the T8×2 lead screw.*
+
+![Coupling and wiring assembly](images/coupler-and-wiring.jpg)
+
+*Internal view showing the coupling assembly and part of the electrical connections.*
+
 The bushing provides the required fit between the motor shaft and the coupler, allowing the motor to transmit motion to the lead screw.
 
 The need for this adaptation and its dimensions may vary if motors or couplers with different dimensions are used.
@@ -252,9 +326,27 @@ The motor should initially be installed without fully tightening its mounting sc
 
 Once the assembly is centered, the motor mounting screws and coupler screws can be tightened.
 
+![Motor coupling overview](images/motor-coupling-overview.jpg)
+
+*Overview of the motor, adaptation enclosure, and C-Beam assembly after installation.*
+
+### 4.5 Assembly Connectors
+
+The adaptation enclosure also provides mounting points for the connectors used to electrically connect the rail assembly to the control module.
+
+![Connectors installed on the enclosure](images/enclosure-connectors.jpg)
+
+*Connectors installed on the adaptation enclosure for connection between the rail and control module.*
+
+The function and pinout of these connectors are described separately in the project's electrical documentation.
+
 ## 5. Camera Mounting
 
 The camera is attached to the C-Beam moving carriage using an **Ulanzi U-KA2 quick-release plate**.
+
+![Camera quick-release system](images/camera-quick-release.jpg)
+
+*Ulanzi U-KA2 quick-release plate installed on the moving rail carriage.*
 
 The quick-release base is mounted directly on the rail carriage plate.
 
@@ -268,18 +360,18 @@ Before connecting and operating the electronic system, the mechanical assembly s
 
 Check:
 
-* attachment of the aluminum enclosure to the C-Beam;
-* NEMA 17 motor mounting;
-* alignment between the motor shaft and lead screw;
-* copper bushing positioning;
-* coupler attachment;
-* absence of excessive lateral deformation of the coupler;
-* free rotation of the lead screw;
-* free movement of the carriage;
-* absence of mechanical binding throughout the travel;
-* quick-release system mounting;
-* camera stability on the carriage;
-* mounting hardware tightness.
+- attachment of the aluminum enclosure to the C-Beam;
+- NEMA 17 motor mounting;
+- alignment between the motor shaft and lead screw;
+- copper bushing positioning;
+- coupler attachment;
+- absence of excessive lateral deformation of the coupler;
+- free rotation of the lead screw;
+- free movement of the carriage;
+- absence of mechanical binding throughout the travel;
+- quick-release system mounting;
+- camera stability on the carriage;
+- mounting hardware tightness.
 
 If increased resistance or irregular movement is detected, the motor alignment should be checked again.
 
@@ -293,11 +385,11 @@ The project uses these components as the mechanical basis for the system.
 
 Mechanical integration implemented in this version includes, among other adaptations:
 
-* use of a 4×2" aluminum electrical box as the motor support and coupling enclosure;
-* adaptation of the enclosure to the existing C-Beam mounting points;
-* clearance around the motor shaft opening to allow alignment adjustment;
-* use of washers to assist mounting and adjustment;
-* use of a copper bushing to match the motor shaft to the coupler;
-* integration of the quick-release plate with the rail carriage.
+- use of a 4×2" aluminum electrical box as the motor support and coupling enclosure;
+- adaptation of the enclosure to the existing C-Beam mounting points;
+- clearance around the motor shaft opening to allow alignment adjustment;
+- use of washers to assist mounting and adjustment;
+- use of a copper bushing to match the motor shaft to the coupler;
+- integration of the quick-release plate with the rail carriage.
 
 These adaptations, together with the overall system configuration and its integration with the **Arandu Stack Macro Rail** firmware and electronic system, are documented in this repository to facilitate reproduction, study, and modification of the equipment.
