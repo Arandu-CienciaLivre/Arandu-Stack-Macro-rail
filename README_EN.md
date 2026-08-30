@@ -6,7 +6,7 @@
 
 The **Arandu Stack Macro Rail** is a precision motorized rail developed for macro photography and automated **focus stacking** sequences.
 
-The system provides precise and repeatable control of linear camera movement, automating the capture of image sequences at different focal planes. The project was conceived as an open and accessible alternative to commercial automated rail systems, using widely available components and allowing users to build, modify, and maintain the equipment themselves.
+The system provides precise and repeatable control of linear camera movement, automating the capture of image sequences at different focal planes. The project was conceived as an open and accessible alternative to commercial automated rail systems, using widely available components and allowing users to build, modify, and maintain the system themselves.
 
 The Macro Rail is part of **Arandu Stack**, an initiative focused on the development of open, accessible, and reproducible tools for photography, documentation, and scientific applications.
 
@@ -45,29 +45,25 @@ Features may change between firmware versions.
 
 ## System Structure
 
-The equipment consists of three main subsystems:
+The Arandu Stack Macro Rail was developed through the integration and adaptation of commercially available electronic and mechanical components, coordinated by firmware developed specifically for the system.
 
-### Mechanics
+This approach makes it possible to build the equipment using widely available components, reducing costs and facilitating reproduction, maintenance, and adaptation.
 
-The mechanical structure provides precise linear camera movement using a stepper motor coupled to a lead screw transmission system.
+### Components and Assembly
 
-The project was designed around readily available commercial components while allowing adaptations according to locally available materials and equipment.
+The system uses electronic modules, mechanical elements, and commercial components selected and integrated to form the automated rail.
 
-### Electronics
-
-The electronic system controls the motor, reads user commands, monitors the equipment, and triggers the camera.
-
-Schematics, connections, and other information required to reproduce the electronics will be made available in this repository.
+Project documentation describes the components used, their connections, adaptations, and assembly procedures required to reproduce the system.
 
 ### Firmware
 
-The firmware controls the user interface, motor movement, operating parameters, and automated photographic sequences.
+The Arandu Stack Macro Rail firmware was developed specifically to control the integrated operation of the equipment.
 
-The source code is provided to allow study, modification, and development of additional features.
+It is responsible for the user interface, motion control, configuration of operating parameters, camera triggering, and execution of automated sequences.
 
 ## Applications
 
-Although primarily developed for **macro photography and focus stacking**, the system can be adapted to other applications requiring controlled and repeatable linear movement.
+Although primarily developed for **macro photography with focus stacking**, the system can be adapted to other applications requiring controlled and repeatable linear movement.
 
 Possible applications include:
 
@@ -81,9 +77,9 @@ Possible applications include:
 
 ## Repository Structure
 
-Project documentation is organized to separate the different components of the system.
+Project documentation is organized to separate the firmware from the materials required to build, configure, and operate the system.
 
-```text id="ng7m0i"
+```text id="uq6rsk"
 Arandu-Stack-Macro-Rail/
 │
 ├── README.md
@@ -92,9 +88,12 @@ Arandu-Stack-Macro-Rail/
 ├── CITATION.cff
 │
 ├── firmware/
-├── hardware/
-├── mechanical/
+│
 ├── docs/
+│   ├── assembly/
+│   ├── wiring/
+│   └── user-guide/
+│
 └── images/
 ```
 
@@ -102,17 +101,9 @@ Arandu-Stack-Macro-Rail/
 
 Source code used to control the equipment.
 
-### `hardware/`
-
-Electronic schematics, circuit boards, wiring diagrams, and other electronics-related files.
-
-### `mechanical/`
-
-Drawings, dimensions, parts, and files related to the mechanical construction of the rail.
-
 ### `docs/`
 
-Additional documentation, assembly instructions, configuration, operation, and maintenance information.
+Technical project documentation, including the bill of materials, assembly instructions, mechanical adaptations, electrical connections, configuration, operation, and maintenance.
 
 ### `images/`
 
@@ -122,9 +113,9 @@ Photographs, diagrams, and images used in the project documentation.
 
 The **Arandu Stack Macro Rail** is under active development.
 
-Functional versions of the equipment have already been developed and tested, and project files will be progressively organized and published in this repository.
+Functional versions of the equipment have already been used during development, and project files will be progressively organized and published in this repository.
 
-Hardware, firmware, and documentation may change throughout development.
+Configuration, firmware, and documentation may change throughout development.
 
 Stable versions will be identified through repository **Releases**.
 
@@ -137,13 +128,13 @@ Documentation is intended to include:
 * bill of materials;
 * mechanical assembly;
 * electronic assembly;
-* wiring;
+* connections and wiring;
 * firmware installation;
 * initial configuration;
 * equipment operation;
 * user interface documentation;
 * troubleshooting;
-* auxiliary manufacturing files.
+* auxiliary files required to reproduce the system.
 
 ## Author
 
@@ -156,23 +147,33 @@ Academic citation name:
 Lattes CV:
 http://lattes.cnpq.br/1385276444101459
 
+### Scope of Authorship
+
+The Arandu Stack Macro Rail uses commercially available electronic and mechanical components from different manufacturers.
+
+Authorship attributed in this repository refers to the development of the **Arandu Stack Macro Rail** system, including its integration, adaptations developed for its implementation, firmware, and original documentation.
+
+Rights related to third-party components, modules, libraries, and designs remain with their respective authors and manufacturers.
+
 ## How to Cite
 
 If the **Arandu Stack Macro Rail** is used in scientific research, academic work, methodology development, or publications, please cite the project appropriately.
 
 Citation metadata is available in the [`CITATION.cff`](CITATION.cff) file.
 
-A permanent DOI reference may be provided for released versions of the project.
+A permanent DOI reference will be provided for released versions of the project.
 
 ## License
 
-The **Arandu Stack Macro Rail** firmware is distributed under the **GNU General Public License v3.0 (GPL-3.0)**.
+The original **Arandu Stack Macro Rail** firmware is distributed under the **GNU General Public License v3.0 (GPL-3.0)**.
 
-The source code may be used, studied, modified, and redistributed according to the terms of the license.
+The firmware may be used, studied, modified, and redistributed according to the terms established by the license.
 
 **Copyright © 2026 Pedro José Vieira de Souza.**
 
-Hardware files, mechanical designs, and documentation may be distributed under specific licenses indicated in their respective directories.
+Original documentation produced for the project may be distributed under a specific license indicated in the corresponding files or directories.
+
+Commercial components, software libraries, and other third-party materials used or referenced by the project remain subject to the licenses and terms established by their respective authors, developers, or manufacturers.
 
 ## Contributions
 
