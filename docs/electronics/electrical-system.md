@@ -1,4 +1,4 @@
-# Eletrônica / Electronics
+# Sistema elétrico / Electrical System
 
 [Português](#português) | [English](#english)
 
@@ -8,242 +8,304 @@
 
 ## 1. Visão geral
 
-O sistema eletrônico do Arandu Stack Macro Rail foi desenvolvido a partir da integração de módulos eletrônicos comerciais de fácil aquisição.
+O sistema elétrico do **Arandu Stack Macro Rail** foi desenvolvido para integrar o controle do motor de passo, a interface do usuário, o disparo da câmera, a alimentação elétrica e os dispositivos opcionais de segurança em um único módulo de controle.
 
-A eletrônica principal é responsável por:
+A arquitetura utiliza módulos eletrônicos comerciais integrados ao sistema, permitindo manutenção, substituição e reprodução com componentes de fácil acesso.
 
-- controle do motor de passo;
-- interface com o usuário;
-- acionamento do disparo da câmera;
-- distribuição de alimentação;
-- comunicação entre o módulo de controle e o trilho;
-- leitura opcional da tensão da bateria.
+Os principais elementos são:
 
-O protótipo utiliza um Arduino Nano como unidade principal de controle.
-
-![Visão geral da montagem eletrônica interna do módulo de controle](images/electronics-overview.jpg)
-
-A montagem apresentada corresponde ao protótipo funcional utilizado durante o desenvolvimento do sistema. A disposição física dos módulos, conectores e fiação pode ser modificada em outras implementações sem alterar o princípio de funcionamento.
-
----
-
-## 2. Unidade de controle
-
-O sistema utiliza um **Arduino Nano** instalado sobre uma placa de expansão com bornes de parafuso.
-
-A placa de expansão facilita a conexão dos diferentes módulos e permite realizar alterações, manutenção e testes sem a necessidade de soldar diretamente nos terminais do Arduino.
-
-![Arduino Nano instalado na placa de expansão com bornes](images/arduino-nano-board.jpg)
-
-O Arduino é responsável pelo processamento da interface, controle do movimento, acionamento do disparo da câmera e execução das rotinas implementadas no firmware.
-
----
-
-## 3. Interface de controle
-
-A interface do equipamento utiliza:
-
+- Arduino Nano;
+- placa de expansão para Arduino Nano com terminais;
 - display LCD 20×4;
 - módulo adaptador I²C para o LCD;
 - encoder rotativo KY-040;
-- dois botões de comando.
-
-O LCD apresenta os menus, parâmetros e informações de operação do sistema.
-
-O encoder é utilizado para navegação pelos menus e ajuste dos parâmetros, enquanto os botões adicionais executam funções específicas definidas pelo firmware.
-
-![Painel de controle com LCD 20×4, encoder rotativo e botões](images/control-panel.jpg)
-
-A lógica completa de operação da interface é descrita separadamente no manual de uso do equipamento.
-
----
-
-## 4. Controle do motor de passo
-
-O motor NEMA 17 é controlado por um driver **TMC2209**.
-
-No protótipo, o TMC2209 é instalado em uma **placa de extensão para driver de motor de passo**, utilizada para concentrar e facilitar as conexões entre:
-
-- alimentação;
-- motor;
-- sinais de controle;
-- configuração do driver.
-
-O driver também utiliza um dissipador de calor.
-
-![Driver TMC2209 instalado na placa de extensão](images/tmc2209-driver.jpg)
-
-O Arduino envia ao driver os sinais necessários para determinar o deslocamento e o sentido de rotação do motor.
-
-A configuração elétrica do driver deve ser compatível com o motor utilizado. A corrente do driver deve ser ajustada adequadamente antes da operação do sistema.
+- dois botões físicos A/B;
+- driver TMC2209;
+- placa de expansão para o TMC2209;
+- dissipador de calor para o driver;
+- módulo regulador/conversor de tensão;
+- módulo de relé para disparo da câmera;
+- voltímetro;
+- chave geral ON/OFF;
+- bateria Li-ion 3S4P;
+- conector P4 de alimentação/carga;
+- conector de 8 vias para interligação entre o módulo de controle e o trilho;
+- dois fins de curso NC opcionais.
 
 ---
 
-## 5. Disparo da câmera
+## 2. Controlador principal
 
-O disparo da câmera é realizado através de um **módulo relé de 1 canal**.
+O sistema utiliza um **Arduino Nano** como unidade principal de controle.
 
-O Arduino aciona o módulo relé durante a sequência fotográfica. O relé funciona como um contato elétrico isolado para o circuito de disparo da câmera.
+O Arduino é instalado sobre uma placa de expansão com terminais, utilizada para facilitar as conexões elétricas e permitir a montagem e manutenção do sistema sem a necessidade de soldar diretamente nos pinos do microcontrolador.
 
-Para o disparo são utilizados os terminais:
+O controlador é responsável por:
 
-- **COM — Common / Comum**
-- **NO — Normally Open / Normalmente Aberto**
-
-Quando o relé é acionado, os contatos COM e NO são fechados temporariamente, realizando o comando de disparo.
-
-![Módulo relé e elementos da distribuição de alimentação](images/relay-power-regulator.jpg)
-
-Os dois condutores correspondentes ao disparo seguem pelo cabo principal de 8 vias entre o módulo de controle e o trilho.
-
-No lado do trilho, esses condutores são encaminhados ao cabo de disparo da câmera.
-
-No protótipo, o cabo de disparo utiliza:
-
-- conector P4 no lado do sistema;
-- conector P1 no lado da câmera.
-
-O tipo de conector utilizado no lado da câmera pode ser adaptado conforme o equipamento fotográfico utilizado.
+- leitura do encoder;
+- leitura dos botões A/B;
+- leitura dos fins de curso;
+- controle do driver do motor;
+- controle do disparo da câmera;
+- comunicação com o LCD;
+- execução das rotinas de focus stacking;
+- execução das rotinas de slider;
+- controle do modo Bulb;
+- armazenamento das configurações na EEPROM;
+- monitoramento opcional da tensão da bateria.
 
 ---
 
-## 6. Cabo principal de 8 vias
+## 3. Interface do usuário
 
-A comunicação elétrica entre o módulo de controle e o trilho é realizada através de um único cabo destacável de **8 vias**.
+A interface utiliza:
 
-![Cabo de interconexão de 8 vias](images/eight-wire-cable.jpg)
+- display LCD 20×4;
+- adaptador I²C;
+- encoder rotativo KY-040;
+- dois botões físicos identificados como **A** e **B**.
 
-A distribuição utilizada no protótipo é:
+O LCD é conectado ao Arduino através do barramento I²C.
 
-| Pino | Função |
-|---:|---|
-| 1 | Motor de passo |
-| 2 | Motor de passo |
-| 3 | Motor de passo |
-| 4 | Motor de passo |
-| 5 | Disparo da câmera |
-| 6 | Disparo da câmera |
-| 7 | Alimentação |
-| 8 | Alimentação |
+No Arduino Nano:
 
-Os pinos **1 a 4** correspondem aos quatro condutores do motor de passo.
+- A4 = SDA;
+- A5 = SCL.
 
-Os pinos **5 e 6** são utilizados pelo circuito de disparo da câmera.
+O encoder é utilizado para navegação, seleção e ajuste dos parâmetros do sistema.
 
-Os pinos **7 e 8** disponibilizam alimentação proveniente da bateria para a região do trilho.
+Os botões A/B são utilizados para definição e acesso às posições A e B e, no modo MOVER, também permitem o deslocamento contínuo do carro quando mantidos pressionados.
 
-![Detalhe interno da conexão do cabo de 8 vias no módulo de controle](images/rear-panel-connector.jpg)
+---
 
-O sistema utiliza conectores circulares destacáveis de 8 pinos, permitindo separar completamente o módulo de controle do conjunto mecânico durante transporte, manutenção ou armazenamento.
+## 4. Controle do motor
+
+O motor de passo NEMA 17 é controlado através de um **driver TMC2209** instalado em uma placa de expansão.
+
+O controle utiliza a interface convencional:
+
+- STEP;
+- DIR;
+- ENABLE.
+
+O driver deve utilizar dissipador de calor adequado.
+
+A configuração elétrica do driver, incluindo corrente do motor e microstepping, deve ser compatível com o motor e com a calibração utilizada no firmware.
+
+O sistema utiliza um fuso trapezoidal T8×2, com:
+
+- diâmetro nominal: 8 mm;
+- passo: 2 mm;
+- avanço: 2 mm por revolução.
+
+A calibração final do deslocamento é realizada no firmware através do parâmetro **Passos/mm**.
+
+---
+
+## 5. Fins de curso
+
+O sistema possui entradas para dois fins de curso:
+
+- fim de curso inicial;
+- fim de curso final.
+
+Os fins de curso são um **recurso adicional e opcional de segurança**. Eles não são utilizados para executar uma rotina automática de HOME e não são necessários para estabelecer a referência de posição do trilho.
+
+Sua função é impedir que o motor continue movimentando o carro além dos limites mecânicos do sistema.
+
+### 5.1 Tipo de chave
+
+O firmware foi projetado para utilizar fins de curso **NC — normalmente fechados**.
+
+Em condição normal de operação, cada entrada de fim de curso permanece conectada ao **GND** através do contato fechado da chave.
+
+Quando o carro aciona o fim de curso, o contato é aberto. A entrada deixa de estar conectada ao GND e o firmware interpreta essa condição como limite físico acionado.
+
+O movimento é então bloqueado apenas na direção correspondente ao fim de curso acionado. O movimento no sentido oposto permanece disponível, permitindo afastar o carro do limite.
+
+### 5.2 Utilização sem fins de curso
+
+> **IMPORTANTE — NÃO DEIXE AS ENTRADAS DOS FINS DE CURSO DESCONECTADAS.**
+>
+> Os fins de curso são opcionais, mas suas entradas elétricas precisam permanecer em um estado definido.
+>
+> Caso os fins de curso não sejam instalados, **cada entrada de fim de curso deve ser conectada diretamente ao GND através de um jumper**, simulando permanentemente o estado de uma chave NC fechada.
+>
+> Se as entradas forem deixadas desconectadas, o `INPUT_PULLUP` do Arduino mantém os pinos em nível HIGH. O firmware interpreta HIGH como fim de curso acionado e, consequentemente, o movimento do trilho poderá ser bloqueado.
+
+Portanto, existem duas configurações válidas:
+
+**Com fins de curso:**
+
+```text
+Entrada ENDSTOP ─── chave NC ─── GND
+```
+
+**Sem fins de curso:**
+
+```text
+Entrada ENDSTOP ─── jumper ─── GND
+```
+
+Esse procedimento deve ser realizado independentemente para as duas entradas de fim de curso.
+
+---
+
+## 6. Disparo da câmera
+
+O disparo da câmera é realizado através de um módulo de relé.
+
+O Arduino controla a entrada do módulo e o contato do relé realiza o fechamento elétrico necessário para acionar o obturador da câmera.
+
+São utilizados os contatos:
+
+- COM;
+- NO (Normally Open).
+
+O relé permanece aberto durante o funcionamento normal e fecha durante o comando de disparo.
+
+A conexão com a câmera é realizada através de um cabo dedicado:
+
+- conector P1 no lado da câmera;
+- conector P4 no lado do controlador.
+
+O sistema pode executar tanto disparos convencionais quanto manter o contato fechado durante exposições no modo Bulb.
 
 ---
 
 ## 7. Alimentação
 
-O protótipo utiliza uma bateria **Li-ion 3S4P**.
+O sistema utiliza uma bateria **Li-ion 3S4P**.
 
-A bateria possui conexões separadas de entrada e saída, totalizando quatro condutores:
+Características gerais:
 
-- dois destinados à entrada de alimentação/recarga;
-- dois destinados à saída para alimentação do sistema.
+- tensão nominal aproximada: 11,1 V;
+- tensão máxima de carga: 12,6 V.
 
-### 7.1 Entrada da bateria
+O conjunto utilizado possui quatro condutores externos, organizados como:
 
-O jack P4 instalado no gabinete é conectado diretamente à entrada da bateria.
+- dois condutores de entrada;
+- dois condutores de saída.
 
-O caminho de entrada pode ser representado como:
+A entrada da bateria é utilizada para conexão ao conector P4 destinado à alimentação/carga.
 
-**jack P4 → entrada da bateria**
+Na saída:
 
-Essa conexão é utilizada para acesso à entrada de alimentação/recarga do conjunto de bateria.
+- o negativo é conectado ao GND comum do sistema;
+- o positivo passa pela chave geral ON/OFF antes de alimentar a distribuição VCC do controlador.
 
-### 7.2 Saída da bateria
-
-Na saída da bateria:
-
-- o terminal negativo (**GND / OUT−**) segue diretamente para a distribuição de GND do sistema;
-- o terminal positivo (**VCC+ / OUT+**) passa pela chave liga/desliga geral antes de seguir para a distribuição positiva.
-
-O caminho principal de alimentação é:
-
-**bateria OUT+ → chave liga/desliga → distribuição VCC+**
-
-**bateria OUT− → distribuição GND**
-
-![Painel traseiro com jack P4, chave liga/desliga e conector de 8 vias](images/rear-panel-connectors.jpg)
-
-O gabinete utilizado no protótipo foi reaproveitado de outro equipamento e possui uma entrada IEC remanescente de uma aplicação anterior. **Essa entrada IEC não é utilizada pelo Arandu Stack Macro Rail.**
-
-### 7.3 Tensão
-
-A tensão nominal de um conjunto Li-ion 3S é aproximadamente:
-
-**11,1 V**
-
-A tensão máxima quando completamente carregado é aproximadamente:
-
-**12,6 V**
-
-Os componentes que necessitam de tensões inferiores devem utilizar conversão ou regulação apropriada antes da alimentação.
+O carregador utilizado deve ser apropriado para bateria Li-ion 3S, com tensão final de carga de **12,6 V**.
 
 ---
 
-## 8. Alimentação da câmera e acessórios
+## 8. Regulação de tensão
 
-Duas vias do cabo principal de 8 vias são reservadas para disponibilizar alimentação junto ao trilho.
+Um módulo regulador/conversor DC-DC é utilizado quando necessário para fornecer tensões adequadas aos diferentes componentes do sistema.
 
-No protótipo, essa alimentação funciona como um **bypass da saída da bateria**, permitindo utilizar a energia do conjunto para alimentar equipamentos instalados junto ao trilho.
+A bateria não deve ser conectada diretamente a dispositivos que exijam tensão diferente daquela fornecida pelo conjunto 3S.
 
-Essa saída pode ser utilizada, por exemplo, para:
-
-- alimentação da câmera;
-- iluminação;
-- acessórios auxiliares;
-- outros módulos compatíveis.
-
-A tensão disponível nessa saída corresponde à tensão do sistema de bateria. Portanto, equipamentos que operem com tensão diferente **não devem ser conectados diretamente**.
-
-Para alimentar uma câmera é necessário utilizar um sistema de conversão adequado à tensão exigida pelo modelo utilizado.
-
-No protótipo com uma **Canon T5i**, é utilizado um conversor compatível com alimentação USB/PD associado a uma dummy battery apropriada para a câmera.
-
-Essa solução é apenas uma implementação possível. Outros modelos de câmera podem exigir tensões, conectores e sistemas de alimentação diferentes.
+A tensão de saída de qualquer conversor deve ser ajustada e verificada antes da conexão do equipamento correspondente.
 
 ---
 
-## 9. Leitura da tensão da bateria
+## 9. Monitoramento da bateria
 
-O firmware possui suporte funcional para leitura da tensão da bateria através de uma entrada analógica do Arduino.
+O protótipo atual utiliza um voltímetro para monitoramento direto da tensão da bateria.
 
-Essa função pode ser utilizada instalando um **divisor resistivo dimensionado de acordo com a tensão máxima da bateria utilizada**.
+O firmware também possui suporte para leitura da tensão através de uma entrada analógica do Arduino.
 
-A saída do divisor deve fornecer ao pino analógico uma tensão dentro dos limites seguros de entrada do microcontrolador.
+Para utilizar essa função, a tensão da bateria deve ser aplicada à entrada analógica **através de um divisor resistivo corretamente dimensionado**. A tensão da bateria 3S não deve ser conectada diretamente ao pino analógico do Arduino.
 
-O firmware possui uma seção destinada à **calibração da leitura de tensão**, permitindo ajustar o valor apresentado pelo sistema de acordo com a tensão real medida.
-
-Durante o desenvolvimento foram utilizados componentes temporários para testar essa função, incluindo um potenciômetro. Esses componentes de teste **não fazem parte da configuração final do projeto**.
-
-No protótipo atual, a leitura interna de bateria não foi instalada porque é utilizado um voltímetro externo conectado à saída da bateria.
-
-Portanto, o circuito de leitura de bateria deve ser considerado uma **função opcional já suportada pelo firmware**.
+O dimensionamento e a calibração do divisor devem corresponder à configuração utilizada no firmware.
 
 ---
 
-## 10. Observações sobre a montagem
+## 10. Cabo de interligação de 8 vias
 
-A montagem eletrônica apresentada nesta documentação corresponde ao protótipo funcional utilizado durante o desenvolvimento do Arandu Stack Macro Rail.
+O módulo de controle e o conjunto instalado no trilho são conectados através de um cabo de **8 vias**.
 
-A disposição física dos módulos dentro do gabinete não é obrigatória e pode ser adaptada de acordo com:
+A distribuição funcional utilizada é:
 
-- gabinete utilizado;
-- disponibilidade dos módulos;
-- sistema de alimentação;
-- organização da fiação;
-- acessórios instalados.
+| Vias | Função |
+|---|---|
+| 1–4 | Motor de passo |
+| 5–6 | Disparo da câmera |
+| 7–8 | Alimentação auxiliar |
 
-Conectores internos destacáveis, terminais, bornes, emendas e outros elementos auxiliares podem ser utilizados conforme necessário para facilitar montagem e manutenção.
+Os quatro primeiros condutores transportam as conexões das duas bobinas do motor.
 
-O importante é preservar as conexões elétricas e as funções descritas nesta documentação.
+As vias 5 e 6 transportam o circuito de disparo da câmera.
+
+As vias 7 e 8 disponibilizam alimentação proveniente da bateria para acessórios instalados no trilho.
+
+A polaridade específica das vias 7 e 8 deve seguir a montagem elétrica adotada no equipamento.
+
+---
+
+## 11. Alimentação auxiliar pelo cabo de 8 vias
+
+As vias de alimentação auxiliar permitem transportar a alimentação da bateria até o conjunto móvel sem a necessidade de um segundo cabo externo.
+
+Essa saída pode ser utilizada para alimentar acessórios, desde que sejam respeitadas suas exigências elétricas.
+
+Quando o equipamento conectado exigir tensão diferente da bateria, deve ser utilizado um conversor apropriado.
+
+Um exemplo é a alimentação de uma câmera através de:
+
+**bateria do sistema → conversor apropriado → alimentação da câmera**
+
+No protótipo, essa arquitetura pode ser utilizada com um módulo de alimentação compatível e uma dummy battery adequada à câmera.
+
+---
+
+## 12. Conectores de 8 vias
+
+O sistema utiliza dois pares de conectores de 8 pinos do tipo utilizado na montagem do protótipo.
+
+Eles permitem separar fisicamente:
+
+- módulo de controle;
+- cabo de interligação;
+- conjunto do trilho.
+
+A utilização de conectores removíveis facilita transporte, manutenção e substituição dos módulos.
+
+Antes de conectar o cabo, deve-se verificar a correspondência da pinagem nos dois lados.
+
+---
+
+## 13. Aterramento comum
+
+Os módulos eletrônicos do controlador que dependem de referência comum devem compartilhar o **GND** adequado.
+
+Isso inclui especialmente:
+
+- Arduino Nano;
+- driver do motor;
+- módulos de interface;
+- reguladores;
+- entradas dos fins de curso.
+
+Conexões incorretas de GND podem causar comportamento imprevisível, falhas de leitura ou impossibilidade de movimentação.
+
+---
+
+## 14. Observações de montagem
+
+Antes da primeira energização:
+
+1. verificar a polaridade da alimentação;
+2. verificar a tensão de saída dos conversores;
+3. verificar a conexão do motor;
+4. verificar as conexões STEP, DIR e ENABLE;
+5. verificar a conexão do LCD e do encoder;
+6. verificar o circuito de disparo da câmera;
+7. verificar a continuidade do cabo de 8 vias;
+8. verificar se os fins de curso NC estão corretamente conectados;
+9. caso os fins de curso não sejam utilizados, verificar se **as duas entradas estão conectadas ao GND por jumpers**;
+10. verificar se não existem curtos entre alimentação e GND.
+
+O conector IEC existente no gabinete atual é proveniente de uma configuração anterior do protótipo e **não faz parte do sistema elétrico atual**.
 
 ---
 
@@ -251,239 +313,301 @@ O importante é preservar as conexões elétricas e as funções descritas nesta
 
 ## 1. Overview
 
-The Arandu Stack Macro Rail electronic system was developed by integrating commercially available electronic modules.
+The **Arandu Stack Macro Rail** electrical system integrates stepper motor control, the user interface, camera triggering, power distribution, and optional safety devices into a single control module.
 
-The main electronics are responsible for:
+The architecture uses commercially available electronic modules integrated into the system, making maintenance, replacement, and reproduction easier.
 
-- stepper motor control;
-- user interface;
-- camera shutter triggering;
-- power distribution;
-- communication between the control module and the rail;
+The main components are:
+
+- Arduino Nano;
+- Arduino Nano terminal expansion board;
+- 20×4 LCD;
+- I²C LCD adapter;
+- KY-040 rotary encoder;
+- two physical A/B buttons;
+- TMC2209 driver;
+- TMC2209 expansion board;
+- driver heatsink;
+- voltage regulator/DC-DC converter;
+- camera trigger relay module;
+- voltmeter;
+- main ON/OFF switch;
+- 3S4P Li-ion battery;
+- P4 power/charging connector;
+- 8-wire interconnection cable;
+- two optional NC endstop switches.
+
+---
+
+## 2. Main controller
+
+An **Arduino Nano** is used as the main controller.
+
+The Arduino is installed on a terminal expansion board to simplify electrical connections and maintenance without requiring direct soldering to the microcontroller pins.
+
+The controller handles:
+
+- encoder input;
+- A/B button input;
+- endstop input;
+- stepper driver control;
+- camera triggering;
+- LCD communication;
+- focus stacking routines;
+- slider routines;
+- Bulb operation;
+- EEPROM configuration storage;
 - optional battery voltage monitoring.
 
-The prototype uses an Arduino Nano as the main control unit.
-
-![General view of the internal electronic assembly of the control module](images/electronics-overview.jpg)
-
-The assembly shown corresponds to the functional prototype used during system development. The physical arrangement of modules, connectors and wiring may be modified in other implementations without changing the operating principle.
-
 ---
 
-## 2. Control unit
+## 3. User interface
 
-The system uses an **Arduino Nano** installed on an expansion board with screw terminals.
-
-The expansion board simplifies connections between the different modules and allows modifications, maintenance and testing without requiring wires to be soldered directly to the Arduino terminals.
-
-![Arduino Nano installed on the screw-terminal expansion board](images/arduino-nano-board.jpg)
-
-The Arduino is responsible for processing the interface, controlling motion, triggering the camera and executing the routines implemented in the firmware.
-
----
-
-## 3. Control interface
-
-The equipment interface uses:
+The interface consists of:
 
 - 20×4 LCD;
-- I²C adapter module for the LCD;
+- I²C adapter;
 - KY-040 rotary encoder;
-- two control buttons.
+- two physical buttons identified as **A** and **B**.
 
-The LCD displays menus, parameters and system operating information.
+The LCD communicates with the Arduino through I²C.
 
-The encoder is used for menu navigation and parameter adjustment, while the additional buttons perform specific functions defined by the firmware.
+On the Arduino Nano:
 
-![Control panel with 20×4 LCD, rotary encoder and buttons](images/control-panel.jpg)
+- A4 = SDA;
+- A5 = SCL.
 
-The complete interface operating logic is described separately in the equipment user guide.
+The encoder is used for menu navigation, selection, and parameter adjustment.
 
----
-
-## 4. Stepper motor control
-
-The NEMA 17 motor is controlled by a **TMC2209** driver.
-
-In the prototype, the TMC2209 is installed on a **stepper driver extension board**, which is used to organize and simplify connections between:
-
-- power;
-- motor;
-- control signals;
-- driver configuration.
-
-The driver also uses a heat sink.
-
-![TMC2209 driver installed on the extension board](images/tmc2209-driver.jpg)
-
-The Arduino sends the signals required to determine motor movement and rotation direction.
-
-The electrical configuration of the driver must be compatible with the motor being used. Driver current must be properly adjusted before operating the system.
+The A/B buttons are used to define and access positions A and B. In MOVER mode, holding either button also provides continuous carriage movement.
 
 ---
 
-## 5. Camera shutter trigger
+## 4. Motor control
 
-Camera triggering is performed through a **single-channel relay module**.
+The NEMA 17 stepper motor is controlled by a **TMC2209 driver** installed on an expansion board.
 
-The Arduino activates the relay module during the photographic sequence. The relay acts as an isolated electrical contact for the camera shutter circuit.
+The control interface uses:
 
-The following relay terminals are used:
+- STEP;
+- DIR;
+- ENABLE.
 
-- **COM — Common**
-- **NO — Normally Open**
+An appropriate heatsink should be installed on the driver.
 
-When the relay is activated, the COM and NO contacts are temporarily closed, generating the shutter command.
+Driver current and microstepping configuration must be compatible with the motor and with the firmware calibration.
 
-![Relay module and power distribution components](images/relay-power-regulator.jpg)
+The system uses a T8×2 trapezoidal lead screw:
 
-The two shutter conductors are carried through the main 8-wire cable between the control module and the rail.
+- nominal diameter: 8 mm;
+- pitch: 2 mm;
+- lead: 2 mm per revolution.
 
-On the rail side, these conductors are routed to the camera shutter cable.
-
-In the prototype, the shutter cable uses:
-
-- a P4 connector on the system side;
-- a P1 connector on the camera side.
-
-The connector used on the camera side may be adapted according to the photographic equipment being used.
+Final movement calibration is performed through the firmware **Steps/mm** parameter.
 
 ---
 
-## 6. Main 8-wire cable
+## 5. Endstops
 
-Electrical communication between the control module and the rail is provided through a single detachable **8-wire cable**.
+The system provides inputs for two endstop switches:
 
-![8-wire interconnection cable](images/eight-wire-cable.jpg)
+- initial endstop;
+- final endstop.
 
-The pin distribution used in the prototype is:
+The endstops are an **optional additional safety feature**. They are not used for an automatic HOME routine and are not required to establish the rail position reference.
 
-| Pin | Function |
-|---:|---|
-| 1 | Stepper motor |
-| 2 | Stepper motor |
-| 3 | Stepper motor |
-| 4 | Stepper motor |
-| 5 | Camera shutter |
-| 6 | Camera shutter |
-| 7 | Power |
-| 8 | Power |
+Their purpose is to prevent the motor from driving the carriage beyond the mechanical travel limits.
 
-Pins **1 through 4** correspond to the four stepper motor conductors.
+### 5.1 Switch type
 
-Pins **5 and 6** are used by the camera shutter circuit.
+The firmware is designed for **NC — normally closed** endstop switches.
 
-Pins **7 and 8** provide battery power to the rail area.
+During normal operation, each endstop input remains connected to **GND** through the closed switch.
 
-![Internal detail of the 8-wire connector inside the control module](images/rear-panel-connector.jpg)
+When the carriage activates an endstop, the contact opens. The input is no longer connected to GND and the firmware interprets this condition as an active physical limit.
 
-The system uses detachable 8-pin circular connectors, allowing the control module to be completely separated from the mechanical rail assembly for transport, maintenance or storage.
+Movement is blocked only in the direction of the activated endstop. Movement in the opposite direction remains available so the carriage can be moved away from the limit.
+
+### 5.2 Operation without endstops
+
+> **IMPORTANT — DO NOT LEAVE THE ENDSTOP INPUTS DISCONNECTED.**
+>
+> The endstop switches are optional, but their electrical inputs must remain in a defined state.
+>
+> If endstop switches are not installed, **each endstop input must be connected directly to GND with a jumper**, permanently simulating the closed state of an NC switch.
+>
+> If these inputs are left disconnected, the Arduino `INPUT_PULLUP` keeps them HIGH. The firmware interprets HIGH as an activated endstop and rail movement may consequently be blocked.
+
+Therefore, there are two valid configurations:
+
+**With endstops:**
+
+```text
+ENDSTOP input ─── NC switch ─── GND
+```
+
+**Without endstops:**
+
+```text
+ENDSTOP input ─── jumper ─── GND
+```
+
+This must be done independently for both endstop inputs.
+
+---
+
+## 6. Camera trigger
+
+Camera triggering is performed through a relay module.
+
+The Arduino controls the relay input, while the relay contact provides the electrical closure required to activate the camera shutter.
+
+The following relay contacts are used:
+
+- COM;
+- NO (Normally Open).
+
+The relay remains open during normal operation and closes during a shutter command.
+
+A dedicated cable connects the controller to the camera:
+
+- P1 connector on the camera side;
+- P4 connector on the controller side.
+
+The system supports both conventional shutter pulses and extended contact closure for Bulb exposures.
 
 ---
 
 ## 7. Power supply
 
-The prototype uses a **3S4P Li-ion battery pack**.
+The system uses a **3S4P Li-ion battery pack**.
 
-The battery has separate input and output connections, with a total of four conductors:
+General characteristics:
 
-- two for power input/charging;
-- two for system power output.
+- nominal voltage: approximately 11.1 V;
+- maximum charging voltage: 12.6 V.
 
-### 7.1 Battery input
+The battery assembly used in the prototype has four external conductors:
 
-The P4 jack installed on the enclosure is connected directly to the battery input.
+- two input conductors;
+- two output conductors.
 
-The input path can be represented as:
+The battery input is connected to the P4 power/charging connector.
 
-**P4 jack → battery input**
+On the output side:
 
-This connection provides access to the battery pack power/charging input.
+- negative is connected to the system common GND;
+- positive passes through the main ON/OFF switch before reaching the controller VCC distribution.
 
-### 7.2 Battery output
-
-At the battery output:
-
-- the negative terminal (**GND / OUT−**) is connected directly to the system GND distribution;
-- the positive terminal (**VCC+ / OUT+**) passes through the main ON/OFF switch before reaching the positive power distribution.
-
-The main power paths are:
-
-**battery OUT+ → ON/OFF switch → VCC+ distribution**
-
-**battery OUT− → GND distribution**
-
-![Rear panel with P4 jack, ON/OFF switch and 8-pin connector](images/rear-panel-connectors.jpg)
-
-The enclosure used in the prototype was repurposed from another device and includes an IEC inlet remaining from a previous application. **This IEC inlet is not used by the Arandu Stack Macro Rail.**
-
-### 7.3 Voltage
-
-The nominal voltage of a 3S Li-ion battery pack is approximately:
-
-**11.1 V**
-
-The maximum voltage when fully charged is approximately:
-
-**12.6 V**
-
-Components requiring lower voltages must use appropriate voltage conversion or regulation before being powered.
+The charger must be suitable for a 3S Li-ion battery pack with a final charging voltage of **12.6 V**.
 
 ---
 
-## 8. Camera and accessory power
+## 8. Voltage regulation
 
-Two conductors of the main 8-wire cable are reserved for providing power at the rail.
+A DC-DC regulator/converter is used where necessary to provide suitable voltages to different system components.
 
-In the prototype, this connection operates as a **bypass from the battery output**, allowing the battery pack to power equipment installed near the rail.
+The battery must not be connected directly to devices requiring a voltage different from that supplied by the 3S pack.
 
-This output may be used, for example, for:
-
-- camera power;
-- lighting;
-- auxiliary accessories;
-- other compatible modules.
-
-The voltage available at this output corresponds to the battery system voltage. Therefore, equipment operating at a different voltage **must not be connected directly**.
-
-To power a camera, an appropriate conversion system must be used to provide the voltage required by the specific camera model.
-
-In the prototype using a **Canon T5i**, a USB/PD-compatible converter is used together with an appropriate dummy battery for the camera.
-
-This is only one possible implementation. Other camera models may require different voltages, connectors and power systems.
+Converter output voltage must be adjusted and verified before connecting the corresponding equipment.
 
 ---
 
-## 9. Battery voltage monitoring
+## 9. Battery monitoring
 
-The firmware includes functional support for battery voltage monitoring through an Arduino analog input.
+The current prototype uses a voltmeter for direct battery voltage monitoring.
 
-This function can be used by installing a **resistive voltage divider properly dimensioned for the maximum voltage of the battery being used**.
+The firmware also supports battery voltage measurement through an Arduino analog input.
 
-The divider output must provide the analog input with a voltage within the microcontroller's safe input limits.
+To use this function, battery voltage must be connected to the analog input **through an appropriately dimensioned voltage divider**. The 3S battery voltage must not be connected directly to the Arduino analog input.
 
-The firmware includes a section for **voltage reading calibration**, allowing the displayed value to be adjusted according to the actual measured battery voltage.
-
-During development, temporary components were used to test this function, including a potentiometer. These test components **are not part of the final project configuration**.
-
-In the current prototype, the internal battery monitoring circuit was not installed because an external voltmeter connected to the battery output is used instead.
-
-The battery monitoring circuit should therefore be considered an **optional function already supported by the firmware**.
+Divider design and calibration must correspond to the firmware configuration.
 
 ---
 
-## 10. Assembly notes
+## 10. 8-wire interconnection cable
 
-The electronic assembly shown in this documentation corresponds to the functional prototype used during development of the Arandu Stack Macro Rail.
+The control module and rail assembly are connected through an **8-wire cable**.
 
-The physical arrangement of modules inside the enclosure is not mandatory and may be adapted according to:
+The functional allocation is:
 
-- enclosure type;
-- module availability;
-- power system;
-- wiring organization;
-- installed accessories.
+| Wires | Function |
+|---|---|
+| 1–4 | Stepper motor |
+| 5–6 | Camera trigger |
+| 7–8 | Auxiliary power |
 
-Internal detachable connectors, terminals, screw terminals, splices and other auxiliary elements may be used as required to simplify assembly and maintenance.
+The first four conductors carry the two stepper motor coil connections.
 
-The important requirement is to preserve the electrical connections and functions described in this documentation.
+Wires 5 and 6 carry the camera trigger circuit.
+
+Wires 7 and 8 provide battery-derived power for accessories installed on the rail.
+
+The specific polarity of wires 7 and 8 must follow the wiring arrangement used in the equipment.
+
+---
+
+## 11. Auxiliary power through the 8-wire cable
+
+The auxiliary power wires allow battery power to be carried to the moving assembly without requiring a second external cable.
+
+This output may be used to power accessories provided their electrical requirements are respected.
+
+If the connected equipment requires a voltage different from the battery voltage, an appropriate converter must be used.
+
+For example:
+
+**system battery → appropriate converter → camera power**
+
+In the prototype, this architecture can be used with a compatible power module and a suitable camera dummy battery.
+
+---
+
+## 12. 8-pin connectors
+
+The system uses two pairs of 8-pin connectors of the type adopted in the prototype.
+
+They allow physical separation between:
+
+- control module;
+- interconnection cable;
+- rail assembly.
+
+Removable connectors simplify transportation, maintenance, and module replacement.
+
+Pin correspondence on both sides must be verified before connecting the cable.
+
+---
+
+## 13. Common ground
+
+Electronic modules that require a shared electrical reference must use the appropriate common **GND**.
+
+This is particularly important for:
+
+- Arduino Nano;
+- motor driver;
+- interface modules;
+- regulators;
+- endstop inputs.
+
+Incorrect GND connections may cause unpredictable behavior, incorrect input readings, or prevent rail movement.
+
+---
+
+## 14. Assembly checks
+
+Before first power-up:
+
+1. verify power polarity;
+2. verify converter output voltages;
+3. verify motor wiring;
+4. verify STEP, DIR, and ENABLE connections;
+5. verify LCD and encoder connections;
+6. verify the camera trigger circuit;
+7. verify continuity of the 8-wire cable;
+8. verify that NC endstop switches are correctly connected;
+9. if endstops are not used, verify that **both endstop inputs are jumpered to GND**;
+10. verify that there are no shorts between power and GND.
+
+The IEC connector present on the current enclosure belongs to an earlier prototype configuration and **is not part of the current electrical system**.
