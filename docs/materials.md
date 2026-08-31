@@ -22,7 +22,7 @@
 | Módulo relé de 1 canal | 1 | Utilizado para o disparo da câmera através dos contatos COM e NO |
 | Módulo conversor/regulador DC-DC | 1 | Adequação da tensão para os elementos eletrônicos que necessitam de tensão inferior |
 | Chave liga/desliga | 1 | Chave geral de alimentação do sistema |
-| Jack P4 | 1 | Conectado diretamente à entrada da bateria |
+| Jack P4 | 1 | Entrada de alimentação/carga no módulo de controle, conectada diretamente à entrada da bateria |
 | Voltímetro | 1 | Monitoramento independente da tensão da bateria no protótipo |
 
 ### Monitoramento opcional da bateria
@@ -92,7 +92,7 @@ A bateria utilizada possui conexões separadas de entrada e saída, totalizando 
 - 2 vias de entrada;
 - 2 vias de saída.
 
-O jack P4 é conectado diretamente à entrada da bateria.
+O jack P4 localizado no módulo de controle é conectado diretamente à entrada da bateria.
 
 Na saída:
 
@@ -107,9 +107,37 @@ Na saída:
 |---|---:|---|
 | Cabo de interligação de 8 vias | 1 | Interliga o módulo de controle ao conjunto instalado no trilho |
 | Conector destacável de 8 pinos tipo Mike | 2 pares | Quatro conectores no total, utilizados nas extremidades da interligação destacável |
-| Cabo de disparo da câmera | 1 | Conector P4 no lado do sistema e P1 no lado da câmera utilizada no protótipo |
+| Jack P2 | 1 | Saída de disparo da câmera localizada no trilho |
+| Jack P4 auxiliar | 1 | Saída de alimentação auxiliar localizada no trilho |
+| Cabo de disparo da câmera | 1 | P2 no lado do Arandu e conector específico de disparo remoto no lado da câmera; no protótipo com Canon EOS T5i, utiliza P1 no lado da câmera |
 | Fios elétricos internos | Conforme necessário | Interligações internas do sistema |
 | Terminais e conectores elétricos | Conforme necessário | Bornes, terminais, conectores destacáveis e elementos auxiliares de montagem |
+
+### Cabo de disparo da câmera
+
+O cabo de disparo utiliza como padrão:
+
+```text
+TRILHO / ARANDU                 CÂMERA
+
+P2 ─────────── cabo ─────────── conector específico
+                               de disparo remoto
+```
+
+O conector da extremidade da câmera depende do modelo utilizado.
+
+Na configuração documentada com uma **Canon EOS T5i**:
+
+```text
+TRILHO / ARANDU                 CANON EOS T5i
+
+P2 ─────────── cabo ─────────── P1
+```
+
+Portanto:
+
+- **P2** é o padrão adotado no lado do Arandu para o disparo;
+- o conector da outra extremidade deve ser compatível com a câmera utilizada.
 
 ### Pinagem do cabo de 8 vias
 
@@ -124,7 +152,22 @@ Na saída:
 | 7 | Alimentação |
 | 8 | Alimentação |
 
-Os pinos 7 e 8 fornecem um bypass da saída da bateria para a região do trilho. A tensão não é regulada especificamente para a câmera ou acessório conectado.
+Os pinos 5 e 6 transportam o circuito de disparo até o jack P2 localizado no trilho.
+
+Os pinos 7 e 8 fornecem um bypass da saída da bateria até o jack P4 de alimentação auxiliar localizado no trilho. A tensão não é regulada especificamente para a câmera ou acessório conectado.
+
+### Resumo dos conectores externos
+
+```text
+MÓDULO DE CONTROLE
+├── 8 vias → interligação com o trilho
+└── P4     → entrada de alimentação/carga
+
+TRILHO
+├── 8 vias → interligação com o módulo
+├── P2     → saída de disparo da câmera
+└── P4     → saída de alimentação auxiliar
+```
 
 ---
 
@@ -145,7 +188,7 @@ Para acessórios instalados diretamente no perfil, podem ser utilizadas porcas T
 
 No protótipo com uma Canon EOS T5i é utilizado:
 
-**bateria do trilho → conversor PD → dummy battery USB → câmera**
+**bateria do sistema → vias 7–8 do cabo de interligação → P4 auxiliar do trilho → conversor PD → dummy battery USB → câmera**
 
 Esse conjunto é apenas um exemplo de implementação e deve ser adaptado de acordo com a tensão e o sistema de alimentação da câmera utilizada.
 
@@ -181,7 +224,7 @@ As especificações de componentes comerciais podem variar entre fabricantes. Se
 | Single-channel relay module | 1 | Camera shutter triggering through COM and NO contacts |
 | DC-DC converter/regulator module | 1 | Voltage adaptation for electronics requiring a lower supply voltage |
 | ON/OFF switch | 1 | Main system power switch |
-| P4 jack | 1 | Connected directly to the battery input |
+| P4 jack | 1 | Power/charging input on the control module, connected directly to the battery input |
 | Voltmeter | 1 | Independent battery voltage monitoring in the prototype |
 
 ### Optional battery monitoring
@@ -251,7 +294,7 @@ The battery used in the prototype has separate input and output connections, wit
 - 2 input wires;
 - 2 output wires.
 
-The P4 jack is connected directly to the battery input.
+The P4 jack located on the control module is connected directly to the battery input.
 
 At the battery output:
 
@@ -266,9 +309,37 @@ At the battery output:
 |---|---:|---|
 | 8-wire interconnection cable | 1 | Connects the control module to the rail assembly |
 | Detachable 8-pin Mike-type connector | 2 pairs | Four connectors in total, used at the ends of the detachable interconnection |
-| Camera shutter cable | 1 | P4 connector on the system side and P1 connector on the prototype camera side |
+| P2 jack | 1 | Camera shutter output located on the rail |
+| Auxiliary P4 jack | 1 | Auxiliary power output located on the rail |
+| Camera shutter cable | 1 | P2 on the Arandu side and camera-specific remote shutter connector on the other end; the Canon EOS T5i prototype uses P1 on the camera side |
 | Internal electrical wire | As required | Internal system wiring |
 | Electrical terminals and connectors | As required | Screw terminals, detachable connectors and auxiliary assembly hardware |
+
+### Camera shutter cable
+
+The standard shutter cable configuration is:
+
+```text
+RAIL / ARANDU                  CAMERA
+
+P2 ─────────── cable ───────── camera-specific
+                               remote shutter connector
+```
+
+The camera-side connector depends on the camera model.
+
+For the documented **Canon EOS T5i** configuration:
+
+```text
+RAIL / ARANDU                  CANON EOS T5i
+
+P2 ─────────── cable ───────── P1
+```
+
+Therefore:
+
+- **P2** is the standardized Arandu-side shutter connection;
+- the connector on the other end must be compatible with the camera being used.
 
 ### 8-wire cable pinout
 
@@ -283,7 +354,22 @@ At the battery output:
 | 7 | Power |
 | 8 | Power |
 
-Pins 7 and 8 provide a bypass from the battery output to the rail area. The voltage is not specifically regulated for the connected camera or accessory.
+Pins 5 and 6 carry the shutter circuit to the P2 jack located on the rail.
+
+Pins 7 and 8 provide a bypass from the battery output to the P4 auxiliary power jack located on the rail. The voltage is not specifically regulated for the connected camera or accessory.
+
+### External connector summary
+
+```text
+CONTROL MODULE
+├── 8-wire → rail interconnection
+└── P4     → power/charging input
+
+RAIL
+├── 8-wire → control module interconnection
+├── P2     → camera shutter output
+└── P4     → auxiliary power output
+```
 
 ---
 
@@ -304,7 +390,7 @@ Accessories mounted directly to the profile may use T-nuts for 2020 aluminum pro
 
 The Canon EOS T5i prototype uses:
 
-**rail battery → PD converter → USB dummy battery → camera**
+**system battery → wires 7–8 of the interconnection cable → rail auxiliary P4 → PD converter → USB dummy battery → camera**
 
 This is only an implementation example and must be adapted according to the voltage and power system required by the camera being used.
 
