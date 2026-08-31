@@ -1,171 +1,193 @@
-# Bill of Materials — Arandu Stack Macro Rail v1.0.0
+# Materials — Arandu Stack Macro Rail v1.0.0
 
 [Português](#português) | [English](#english)
 
-Esta lista apresenta os principais componentes utilizados na construção da versão **1.0.0** do Arandu Stack Macro Rail.
+Este documento apresenta os principais materiais e componentes utilizados na construção do **Arandu Stack Macro Rail v1.0.0**.
 
-Alguns componentes podem ser substituídos por modelos equivalentes, desde que sejam eletricamente e mecanicamente compatíveis com o sistema.
+Alguns componentes utilizados são módulos comerciais prontos, enquanto outros foram adaptados ou integrados especificamente para esta implementação do sistema.
 
 ---
 
 # Português
 
-## 1. Controle e interface
+## 1. Controle e eletrônica
 
-| Quantidade | Componente                          | Especificação / função                                                   |
-| ---------: | ----------------------------------- | ------------------------------------------------------------------------ |
-|          1 | Arduino Nano                        | Microcontrolador principal do sistema                                    |
-|          1 | Placa de expansão para Arduino Nano | Breakout com bornes para facilitar as conexões aos pinos do Arduino Nano |
-|          1 | Display LCD 20×4                    | Interface visual do sistema                                              |
-|          1 | Módulo I²C para LCD                 | Interface entre o Arduino e o display LCD 20×4                           |
-|          1 | Encoder rotativo KY-040             | Navegação pelos menus e ajuste de parâmetros                             |
-|          2 | Botões de pressão                   | Comandos dedicados da interface                                          |
+| Componente | Quantidade | Observações |
+|---|---:|---|
+| Arduino Nano | 1 | Microcontrolador principal do sistema |
+| Placa de expansão para Arduino Nano | 1 | Placa com terminais de parafuso utilizada para facilitar as conexões |
+| Display LCD 20×4 | 1 | Interface de visualização |
+| Módulo I²C para LCD | 1 | Interface entre o LCD e o Arduino |
+| Encoder rotativo KY-040 | 1 | Navegação pelos menus e ajuste de parâmetros |
+| Botão de pressão | 2 | Comandos auxiliares do sistema |
+| Driver TMC2209 | 1 | Controle do motor de passo |
+| Placa de expansão para TMC2209 | 1 | Facilita a instalação e conexão do driver |
+| Regulador de tensão | 1 | Alimentação dos circuitos eletrônicos |
+| Módulo relé | 1 | Utilizado no acionamento das funções de disparo da câmera |
+| Fios elétricos | Conforme necessário | Ligações internas do sistema |
+| Terminais e conectores elétricos | Conforme necessário | Acabamento e interligação dos circuitos |
 
-## 2. Controle de movimento
+## 2. Motor e sistema de movimento
 
-| Quantidade | Componente                      | Especificação / função                      |
-| ---------: | ------------------------------- | ------------------------------------------- |
-|          1 | Motor de passo NEMA 17          | Responsável pelo movimento do trilho        |
-|          1 | Driver TMC2209                  | Controle do motor de passo                  |
-|          1 | Módulo de expansão para TMC2209 | Facilita as conexões elétricas com o driver |
+| Componente | Quantidade | Observações |
+|---|---:|---|
+| Motor de passo NEMA 17 | 1 | Responsável pelo acionamento do trilho |
+| Atuador linear C-Beam | 1 | Comprimento nominal de 250 mm e aproximadamente 150 mm de curso útil |
+| Fuso trapezoidal T8×2 | 1 | 8 mm de diâmetro, passo de 2 mm e avanço de 2 mm por revolução |
+| Acoplador flexível | 1 | Fornecido com o conjunto C-Beam |
+| Bucha de cobre | 1 | Aproximadamente 1 mm de espessura; utilizada para compatibilizar o eixo do motor com o acoplador |
+| Carro móvel C-Beam | 1 | Parte móvel utilizada como base para instalação da câmera |
 
-## 3. Acionamento da câmera
+## 3. Estrutura e montagem
 
-| Quantidade | Componente                | Especificação / função                                                                                  |
-| ---------: | ------------------------- | ------------------------------------------------------------------------------------------------------- |
-|          1 | Módulo de relé            | Acionamento elétrico do disparo da câmera                                                               |
-|          1 | Cabo de disparo da câmera | Cabo confeccionado para o projeto, utilizando conector P1 no lado da câmera e P4 no lado do controlador |
+| Componente | Quantidade | Observações |
+|---|---:|---|
+| Caixa elétrica de alumínio 4×2" | 1 | Adaptada como suporte do motor e proteção do sistema de acoplamento |
+| Caixa para o módulo de controle | 1 | Modelo definitivo ainda a ser definido |
+| Placa de liberação rápida Ulanzi U-KA2 | 1 | Sistema de montagem e remoção rápida da câmera |
 
-A pinagem do cabo de disparo deve seguir o esquema elétrico documentado para o projeto.
+## 4. Elementos de fixação
 
-## 4. Alimentação
+| Componente | Quantidade | Aplicação |
+|---|---:|---|
+| Parafuso M3 × 8 mm | 2 | Fixação do motor NEMA 17 à caixa de alumínio |
+| Arruela para parafuso M3 | 2 | Aumenta a área de apoio sobre os furos com folga utilizados para ajuste da posição do motor |
+| Parafuso fotográfico 1/4" × 12 mm | 1 | Fixação da placa de liberação rápida ao carro do trilho |
+| Porca T para perfil de alumínio 2020, canal de 6 mm | Conforme necessário | Instalação de acessórios no perfil do trilho |
+| Parafuso M5 compatível com porca T | Conforme necessário | Instalação de acessórios no perfil do trilho |
+| Parafusos e elementos de fixação do conjunto C-Beam | Conforme o conjunto | Incluem os elementos utilizados na montagem original do atuador |
 
-| Quantidade | Componente                        | Especificação / função                                                                                 |
-| ---------: | --------------------------------- | ------------------------------------------------------------------------------------------------------ |
-|          1 | Pack de baterias Li-ion 3S4P      | Fonte de alimentação principal do sistema; tensão nominal de aproximadamente 11,1 V e máxima de 12,6 V |
-|          1 | Regulador de tensão               | Regulação da tensão utilizada pelos componentes eletrônicos                                            |
-|          1 | Carregador para bateria Li-ion 3S | Carregador compatível com pack 3S, com tensão final de carga de 12,6 V                                 |
+As porcas T e os parafusos M5 são utilizados como pontos auxiliares de montagem e permitem instalar acessórios no perfil do trilho, como bases Arca-Swiss, suportes de iluminação e outros componentes.
 
-> O sistema de bateria deve possuir proteção adequada para as células utilizadas. A configuração e o carregamento do pack devem respeitar as especificações das células e do circuito de proteção empregado.
+O comprimento dos parafusos M5 depende do acessório instalado.
 
-## 5. Estrutura mecânica
+## 5. Alimentação
 
-| Quantidade | Componente                             | Especificação / função                                                                          |
-| ---------: | -------------------------------------- | ----------------------------------------------------------------------------------------------- |
-|          1 | Trilho linear C-Beam                   | Estrutura linear com curso de aproximadamente 150 mm                                            |
-|          1 | Fuso trapezoidal T8×2                  | Diâmetro de 8 mm e avanço de 2 mm por revolução                                                 |
-|          1 | Caixa elétrica de alumínio 4×2"        | Adaptada como suporte e estrutura de acoplamento entre o motor NEMA 17 e o conjunto C-Beam/fuso |
-|          1 | Placa de liberação rápida Ulanzi U-KA2 | Utilizada para fixação e remoção rápida da câmera no carro do trilho                            |
+| Componente | Quantidade | Observações |
+|---|---:|---|
+| Pack de baterias Li-ion 3S4P | 1 | Tensão nominal aproximada de 11,1 V e 12,6 V totalmente carregado |
+| Carregador para bateria Li-ion 3S | 1 | Tensão final de carga de 12,6 V |
 
-A Ulanzi U-KA2 pode ser substituída por outro sistema de fixação de câmera mecanicamente compatível.
+## 6. Cabos e conectores externos
 
-## 6. Conexões
+| Componente | Quantidade | Observações |
+|---|---:|---|
+| Cabo de interligação de 8 vias | 1 | Conecta o módulo de controle ao conjunto do trilho |
+| Conectores de 8 pinos tipo Mike | 2 pares | Quatro conectores no total, permitindo a desconexão do cabo nas duas extremidades |
+| Cabo de disparo da câmera | 1 | Construído especificamente para interligar a câmera ao módulo de controle |
+| Conector P1 | 1 | Utilizado no lado da câmera no cabo de disparo |
+| Conector P4 | 1 | Utilizado no lado do controlador no cabo de disparo |
 
-|          Quantidade | Componente                     | Especificação / função                                                                |
-| ------------------: | ------------------------------ | ------------------------------------------------------------------------------------- |
-|                   1 | Cabo de interligação de 8 vias | Interligação entre o módulo de controle e o conjunto do trilho                        |
-|             2 pares | Conectores tipo Mike de 8 vias | Conexões destacáveis utilizadas na interligação entre o módulo de controle e o trilho |
-| Conforme necessário | Cabos elétricos                | Alimentação e sinais entre os módulos internos                                        |
-| Conforme necessário | Terminais para bornes          | Terminação dos cabos utilizados nas conexões por borne                                |
+## 7. Acessórios e possibilidades de expansão
 
-A pinagem dos conectores de 8 vias deve seguir o esquema de conexão específico do Arandu Stack Macro Rail e não deve ser considerada uma pinagem padrão para conectores desse tipo.
+O perfil do C-Beam permite a instalação de acessórios utilizando porcas T para perfil 2020 com canal de 6 mm e parafusos M5.
 
-## 7. Gabinete
+Entre os acessórios que podem ser instalados estão:
 
-| Quantidade | Componente                    | Especificação / função                                                              |
-| ---------: | ----------------------------- | ----------------------------------------------------------------------------------- |
-|          1 | Caixa para módulo de controle | Gabinete para acomodar display, Arduino, controles e demais componentes eletrônicos |
+- base ou sapata Arca-Swiss para fixação do trilho em tripé;
+- suportes de iluminação;
+- braços auxiliares;
+- outros acessórios compatíveis com o perfil.
 
-O gabinete utilizado durante o desenvolvimento poderá ser substituído por outro modelo com dimensões adequadas aos componentes.
+Esses acessórios não são obrigatórios para o funcionamento básico do Macro Rail e podem variar conforme a aplicação.
 
-## Observações
+## 8. Observações
 
-Os componentes apresentados nesta lista correspondem à configuração utilizada no desenvolvimento do **Arandu Stack Macro Rail v1.0.0**.
+Os componentes eletrônicos e mecânicos listados neste documento são componentes comerciais utilizados como base para a construção do sistema.
 
-Componentes comerciais pertencem aos seus respectivos fabricantes. Sua inclusão nesta lista indica apenas sua utilização e integração ao sistema.
+O **Arandu Stack Macro Rail** documenta a seleção, integração, adaptação e configuração desses componentes, juntamente com o firmware e as soluções desenvolvidas para sua utilização como sistema de posicionamento linear para macrofotografia, focus stacking e outras aplicações experimentais.
 
-Pequenas adaptações mecânicas ou elétricas podem ser necessárias dependendo dos modelos específicos de componentes utilizados.
+Componentes equivalentes podem ser utilizados desde que sejam eletricamente e mecanicamente compatíveis com o sistema.
 
 ---
 
 # English
 
-This list presents the main components used to build **Arandu Stack Macro Rail version 1.0.0**.
+## 1. Control and Electronics
 
-Some components may be replaced by equivalent models, provided that they are electrically and mechanically compatible with the system.
+| Component | Quantity | Notes |
+|---|---:|---|
+| Arduino Nano | 1 | Main system microcontroller |
+| Arduino Nano expansion board | 1 | Screw-terminal breakout board used to simplify connections |
+| 20×4 LCD | 1 | User interface display |
+| I²C LCD module | 1 | Interface between the LCD and Arduino |
+| KY-040 rotary encoder | 1 | Menu navigation and parameter adjustment |
+| Push button | 2 | Auxiliary system controls |
+| TMC2209 driver | 1 | Stepper motor control |
+| TMC2209 expansion board | 1 | Simplifies driver installation and connections |
+| Voltage regulator | 1 | Provides regulated power for the electronic circuits |
+| Relay module | 1 | Used for camera shutter control functions |
+| Electrical wire | As required | Internal system wiring |
+| Electrical terminals and connectors | As required | Circuit interconnection and finishing |
 
-## 1. Control and User Interface
+## 2. Motor and Motion System
 
-| Quantity | Component                    | Specification / function                                                           |
-| -------: | ---------------------------- | ---------------------------------------------------------------------------------- |
-|        1 | Arduino Nano                 | Main system microcontroller                                                        |
-|        1 | Arduino Nano expansion board | Breakout board with screw terminals for easier connection to the Arduino Nano pins |
-|        1 | 20×4 LCD display             | System visual interface                                                            |
-|        1 | I²C LCD module               | Interface between the Arduino and the 20×4 LCD                                     |
-|        1 | KY-040 rotary encoder        | Menu navigation and parameter adjustment                                           |
-|        2 | Push buttons                 | Dedicated interface controls                                                       |
+| Component | Quantity | Notes |
+|---|---:|---|
+| NEMA 17 stepper motor | 1 | Drives the linear rail |
+| C-Beam linear actuator | 1 | 250 mm nominal length and approximately 150 mm usable travel |
+| T8×2 trapezoidal lead screw | 1 | 8 mm diameter, 2 mm pitch and 2 mm travel per revolution |
+| Flexible coupler | 1 | Supplied with the C-Beam assembly |
+| Copper bushing | 1 | Approximately 1 mm thick; used to match the motor shaft to the coupler |
+| C-Beam moving carriage | 1 | Moving platform used for camera mounting |
 
-## 2. Motion Control
+## 3. Structure and Assembly
 
-| Quantity | Component                | Specification / function                         |
-| -------: | ------------------------ | ------------------------------------------------ |
-|        1 | NEMA 17 stepper motor    | Provides rail movement                           |
-|        1 | TMC2209 driver           | Stepper motor driver                             |
-|        1 | TMC2209 expansion module | Facilitates electrical connections to the driver |
+| Component | Quantity | Notes |
+|---|---:|---|
+| 4×2" aluminum electrical box | 1 | Adapted as the motor support and coupling enclosure |
+| Control module enclosure | 1 | Final enclosure model still to be defined |
+| Ulanzi U-KA2 quick-release plate | 1 | Quick camera mounting and removal system |
 
-## 3. Camera Trigger
+## 4. Mounting Hardware
 
-| Quantity | Component            | Specification / function                                                                       |
-| -------: | -------------------- | ---------------------------------------------------------------------------------------------- |
-|        1 | Relay module         | Electrical camera shutter triggering                                                           |
-|        1 | Camera trigger cable | Custom cable using a P1 connector on the camera side and a P4 connector on the controller side |
+| Component | Quantity | Application |
+|---|---:|---|
+| M3 × 8 mm screw | 2 | Mounting the NEMA 17 motor to the aluminum enclosure |
+| M3 washer | 2 | Increases the bearing area over the enlarged motor adjustment holes |
+| 1/4" × 12 mm photographic screw | 1 | Mounting the quick-release plate to the rail carriage |
+| T-nut for 2020 aluminum profile, 6 mm slot | As required | Accessory mounting on the rail profile |
+| M5 screw compatible with T-nut | As required | Accessory mounting on the rail profile |
+| C-Beam mounting hardware | As supplied | Includes the original fasteners used in the actuator assembly |
 
-The camera trigger cable pinout must follow the electrical wiring documentation provided for the project.
+The T-nuts and M5 screws provide auxiliary mounting points for accessories such as Arca-Swiss bases, lighting supports, and other components.
 
-## 4. Power Supply
+The required M5 screw length depends on the accessory being installed.
 
-| Quantity | Component                 | Specification / function                                                           |
-| -------: | ------------------------- | ---------------------------------------------------------------------------------- |
-|        1 | 3S4P Li-ion battery pack  | Main system power source; approximately 11.1 V nominal and 12.6 V fully charged    |
-|        1 | Voltage regulator         | Regulates the voltage supplied to the electronic components                        |
-|        1 | 3S Li-ion battery charger | Charger compatible with a 3S battery pack, with a final charging voltage of 12.6 V |
+## 5. Power Supply
 
-> The battery system must include appropriate protection for the cells used. Pack configuration and charging must comply with the specifications of the cells and protection circuit.
+| Component | Quantity | Notes |
+|---|---:|---|
+| 3S4P Li-ion battery pack | 1 | Approximately 11.1 V nominal and 12.6 V when fully charged |
+| 3S Li-ion battery charger | 1 | 12.6 V final charging voltage |
 
-## 5. Mechanical Structure
+## 6. External Cables and Connectors
 
-| Quantity | Component                        | Specification / function                                                                                 |
-| -------: | -------------------------------- | -------------------------------------------------------------------------------------------------------- |
-|        1 | C-Beam linear rail               | Linear structure with approximately 150 mm of travel                                                     |
-|        1 | T8×2 lead screw                  | 8 mm diameter with 2 mm of linear travel per revolution                                                  |
-|        1 | 4×2" aluminum electrical box     | Adapted as a support and coupling structure between the NEMA 17 motor and the C-Beam/lead screw assembly |
-|        1 | Ulanzi U-KA2 quick-release plate | Used for quick camera attachment and removal from the rail carriage                                      |
+| Component | Quantity | Notes |
+|---|---:|---|
+| 8-wire interconnection cable | 1 | Connects the control module to the rail assembly |
+| 8-pin Mike-type connectors | 2 pairs | Four connectors in total, allowing the cable to be disconnected at both ends |
+| Camera trigger cable | 1 | Custom cable connecting the camera to the control module |
+| P1 connector | 1 | Used on the camera side of the trigger cable |
+| P4 connector | 1 | Used on the controller side of the trigger cable |
 
-The Ulanzi U-KA2 may be replaced by another mechanically compatible camera mounting system.
+## 7. Accessories and Expansion
 
-## 6. Connections
+The C-Beam profile allows accessories to be installed using T-nuts for 2020 aluminum profiles with 6 mm slots and compatible M5 screws.
 
-|    Quantity | Component                    | Specification / function                                                          |
-| ----------: | ---------------------------- | --------------------------------------------------------------------------------- |
-|           1 | 8-wire interconnection cable | Connects the control module to the rail assembly                                  |
-|     2 pairs | 8-pin Mike-type connectors   | Detachable connectors used for the connection between the control module and rail |
-| As required | Electrical wires             | Power and signal connections between internal modules                             |
-| As required | Terminal connectors          | Wire termination for screw-terminal connections                                   |
+Possible accessories include:
 
-The 8-pin connector pinout must follow the specific Arandu Stack Macro Rail wiring diagram and should not be considered a standard pinout for this connector type.
+- Arca-Swiss base or plate for mounting the rail on a tripod;
+- lighting supports;
+- auxiliary arms;
+- other accessories compatible with the profile.
 
-## 7. Enclosure
+These accessories are not required for basic Macro Rail operation and may vary according to the intended application.
 
-| Quantity | Component                | Specification / function                                                      |
-| -------: | ------------------------ | ----------------------------------------------------------------------------- |
-|        1 | Control module enclosure | Enclosure for the display, Arduino, controls, and other electronic components |
+## 8. Notes
 
-The enclosure used during development may be replaced by another model with dimensions suitable for the components.
+The electronic and mechanical components listed in this document are commercial components used as the basis for construction of the system.
 
-## Notes
+The **Arandu Stack Macro Rail** documents the selection, integration, adaptation, and configuration of these components, together with the firmware and solutions developed for their use as a linear positioning system for macro photography, focus stacking, and other experimental applications.
 
-The components listed in this document correspond to the configuration used in the development of **Arandu Stack Macro Rail v1.0.0**.
-
-Commercial components remain the property of their respective manufacturers. Their inclusion in this list only indicates their use and integration into the system.
-
-Minor mechanical or electrical adaptations may be required depending on the specific component models used.
+Equivalent components may be used provided that they are electrically and mechanically compatible with the system.
