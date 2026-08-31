@@ -1,6 +1,6 @@
 # Arandu Stack Macro Rail — User Guide
 
-[Português](user-guide.md) | [English](user-guide_EN.md)
+[Português](guia-do-usuario.md) | [English](user-guide_EN.md)
 
 Operating manual for the **Arandu Stack Macro Rail v1.0.0**.
 
