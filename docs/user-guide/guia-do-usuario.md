@@ -269,6 +269,10 @@ SLIDER
 CONFIG
 ```
 
+![Menu principal do Arandu Stack Macro Rail](images/main-menu.jpg)
+
+*Menu principal do sistema, com acesso aos modos STACK, BULB, SLIDER e CONFIG.*
+
 **STACK**
 
 Configuração e execução de sequências de focus stacking.
@@ -459,6 +463,10 @@ Pressione novamente o encoder para sair do Mover ativo.
 
 O valor apresentado em `Mover` corresponde à posição relativa atual, exibida em micrômetros.
 
+![Tela MOVER do modo STACK](images/stack-mover.jpg)
+
+*Tela MOVER do modo STACK, mostrando a velocidade selecionada, a posição atual e os pontos A e B.*
+
 ---
 
 ### 5.2 Definição dos pontos A e B
@@ -505,6 +513,10 @@ Fotos:
 Dist:
 Passo:
 ```
+
+![Tela SEQUENCIA do modo STACK](images/stack-sequencia.jpg)
+
+*Tela SEQUENCIA, com o número calculado de fotografias, a distância entre A e B e o passo configurado.*
 
 #### Fotos
 
@@ -828,6 +840,10 @@ Dir:
 Vel:
 ```
 
+![Tela VIDEO do modo SLIDER](images/slider-video.jpg)
+
+*Tela VIDEO do modo SLIDER, mostrando a direção, a distância entre A e B e a velocidade de deslocamento.*
+
 #### Iniciar
 
 Inicia o movimento.
@@ -1031,6 +1047,10 @@ VelR
 Salvar
 Fabrica
 ```
+
+![Menu CONFIG do Arandu Stack Macro Rail](images/config-menu.jpg)
+
+*Menu CONFIG, utilizado para calibração e ajuste dos parâmetros gerais de movimento.*
 
 ---
 
