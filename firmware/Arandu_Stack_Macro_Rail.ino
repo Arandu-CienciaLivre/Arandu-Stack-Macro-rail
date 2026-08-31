@@ -45,9 +45,9 @@ LiquidCrystal_I2C lcd(0x27, 20, 4); // Define LCD I2C no endereco 0x27, com 20 c
 // PINAGEM - ARDUINO NANO
 // ============================================================
 
-const byte STEP_PIN       = 2;      // Pino STEP do A4988.
-const byte DIR_PIN        = 3;      // Pino DIR do A4988.
-const byte ENABLE_PIN     = 4;      // Pino ENABLE do A4988; LOW habilita o driver.
+const byte STEP_PIN       = 2;      // Pino STEP do driver.
+const byte DIR_PIN        = 3;      // Pino DIR do driver.
+const byte ENABLE_PIN     = 4;      // Pino ENABLE do driver; LOW habilita o driver.
 const byte SHUTTER_PIN    = 5;      // Pino que aciona o optoacoplador da camera.
 const byte ENDSTOP_HOME   = 6;      // Fim de curso inicial, usado somente como seguranca.
 const byte ENDSTOP_FINAL  = 7;      // Fim de curso final, usado somente como seguranca.
@@ -254,7 +254,7 @@ void setup() {                                      // Executa uma vez ao ligar.
   pinMode(STEP_PIN, OUTPUT);                       // Configura STEP como saida.
   pinMode(DIR_PIN, OUTPUT);                        // Configura DIR como saida.
   pinMode(ENABLE_PIN, OUTPUT);                     // Configura ENABLE como saida.
-  digitalWrite(ENABLE_PIN, LOW);                   // Habilita A4988.
+  digitalWrite(ENABLE_PIN, LOW);                   // Habilita driver.
   pinMode(SHUTTER_PIN, OUTPUT);                    // Configura disparo como saida.
   digitalWrite(SHUTTER_PIN, LOW);                  // Mantem disparo desligado.
   pinMode(ENDSTOP_HOME, INPUT_PULLUP);             // Configura fim inicial como entrada pullup.
