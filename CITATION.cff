@@ -3,9 +3,8 @@ message: "If you use this project in scientific research, academic work, or publ
 title: "Arandu Stack Macro Rail"
 type: software
 authors:
-
-* family-names: "Vieira de Souza"
-  given-names: "Pedro José"
-  version: 1.0.0
-  date-released: 2026-08-30
-  license: GPL-3.0
+  - family-names: "Vieira de Souza"
+    given-names: "Pedro José"
+version: 1.0.0
+date-released: 2026-08-30
+license: GPL-3.0
