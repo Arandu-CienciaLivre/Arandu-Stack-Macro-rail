@@ -112,13 +112,13 @@ It has three functions:
 - **short press** — select items, enter or exit edit mode, and start specific functions;
 - **long press** — return to the previous screen or cancel a running routine.
 
-When **MOVE** is active, rotating the encoder also physically moves the carriage.
+When **MOVER** is active, rotating the encoder also physically moves the carriage.
 
 Each encoder increment moves the carriage according to the selected mode:
 
-- **SLOW**;
-- **MEDIUM**;
-- **FAST**.
+- **LENTO**;
+- **MEDIO**;
+- **RAPIDO**.
 
 The corresponding movement increments and speeds can be changed in the **CONFIG** menu.
 
@@ -155,9 +155,9 @@ It is used to:
 
 ### 2.3 A and B buttons
 
-The A and B buttons perform different functions depending on whether **MOVE** is active.
+The A and B buttons perform different functions depending on whether **MOVER** is active.
 
-#### While MOVE is active
+#### While MOVER is active
 
 **Short press on A**
 
@@ -179,17 +179,17 @@ Movement continues only while the corresponding button remains pressed.
 
 When the button is released, movement stops immediately, without a programmed deceleration ramp.
 
-The movement speed is determined by the currently selected MOVE mode:
+The movement speed is determined by the currently selected MOVER mode:
 
-- SLOW;
-- MEDIUM;
-- FAST.
+- LENTO;
+- MEDIO;
+- RAPIDO.
 
 A long press used for movement **does not save point A or B when the button is released**.
 
 If A and B are held simultaneously, the system does not start continuous movement.
 
-#### While MOVE is not active
+#### While MOVER is not active
 
 A short press on **A** moves the carriage to the previously defined A point.
 
@@ -268,6 +268,10 @@ BULB
 SLIDER
 CONFIG
 ```
+
+![Arandu Stack Macro Rail main menu](images/main-menu.jpg)
+
+*Main menu providing access to STACK, BULB, SLIDER, and CONFIG.*
 
 **STACK**
 
@@ -415,7 +419,7 @@ TEMPOS
 FOTOGRAFAR
 ```
 
-The interface labels remain in Portuguese because they correspond directly to the labels displayed by the firmware.
+The labels shown in examples are kept exactly as they appear in the firmware interface.
 
 ---
 
@@ -460,6 +464,10 @@ Each encoder increment uses:
 Press the encoder again to leave active Mover mode.
 
 The value shown in `Mover` represents the current relative position, displayed in micrometers.
+
+![STACK MOVER screen](images/stack-mover.jpg)
+
+*STACK MOVER screen showing the selected movement mode, current position, and A and B points.*
 
 ---
 
@@ -507,6 +515,10 @@ Fotos:
 Dist:
 Passo:
 ```
+
+![STACK SEQUENCIA screen](images/stack-sequencia.jpg)
+
+*SEQUENCIA screen showing the calculated number of photographs, A–B distance, and configured step size.*
 
 #### Fotos
 
@@ -898,6 +910,10 @@ Dir:
 Vel:
 ```
 
+![SLIDER VIDEO screen](images/slider-video.jpg)
+
+*SLIDER VIDEO screen showing direction, A–B distance, and movement speed.*
+
 #### Iniciar
 
 Starts the movement.
@@ -1109,6 +1125,10 @@ VelR
 Salvar
 Fabrica
 ```
+
+![Arandu Stack Macro Rail CONFIG menu](images/config-menu.jpg)
+
+*CONFIG menu used to calibrate the system and adjust general movement parameters.*
 
 ---
 
