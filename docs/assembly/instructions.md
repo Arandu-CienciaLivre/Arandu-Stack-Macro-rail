@@ -36,7 +36,10 @@ Os principais componentes utilizados nesta montagem são:
 - bucha de cobre de aproximadamente 1 mm de espessura;
 - caixa elétrica de alumínio 4×2";
 - placa de liberação rápida Ulanzi U-KA2;
-- parafusos, arruelas e demais elementos de fixação necessários à montagem.
+- 2 parafusos M3 × 8 mm;
+- 2 arruelas para os parafusos M3;
+- 1 parafuso fotográfico 1/4" × 12 mm;
+- porcas T para perfil 2020 com canal de 6 mm e parafusos M5, conforme necessário para instalação de acessórios.
 
 A lista geral de componentes do projeto está disponível em [`../materials.md`](../materials.md).
 
@@ -74,7 +77,7 @@ Com a caixa posicionada, os pontos correspondentes aos furos de fixação existe
 
 Após a furação, a caixa foi fixada ao conjunto utilizando os **próprios parafusos de fixação do trilho**.
 
-Esse método permite utilizar a própria geometria do conjunto C-Beam como referência para o posicionamento da caixa, sem depender de um gabarito específico de furação.
+Esse método utiliza a própria geometria do conjunto C-Beam como referência para o posicionamento da caixa, dispensando um gabarito específico de furação.
 
 ![Fixação do conjunto do motor ao trilho](images/motor-mount-front.jpg)
 
@@ -82,21 +85,23 @@ Esse método permite utilizar a própria geometria do conjunto C-Beam como refer
 
 ### 4.2 Fixação e centralização do motor
 
-O NEMA 17 foi posicionado sobre a face da caixa de alumínio utilizando uma das **aberturas laterais já existentes na caixa** para a passagem do eixo do motor.
+O NEMA 17 foi posicionado sobre a caixa de alumínio aproveitando uma das **aberturas laterais já existentes na caixa elétrica** para a passagem do eixo do motor.
 
-Essa abertura faz parte originalmente da própria caixa elétrica e, nesta adaptação, foi aproveitada para permitir a passagem do eixo do motor até o interior da caixa, onde é realizado o acoplamento com o fuso.
+Essa abertura é uma característica original da caixa e, nesta adaptação, permite que o eixo do motor alcance o interior da caixa, onde é realizado o acoplamento com o fuso.
 
-Para a fixação do motor foram realizados quatro furos correspondentes aos seus pontos de montagem. Esses furos foram feitos com diâmetro maior que o estritamente necessário para a passagem dos parafusos, criando uma pequena folga de posicionamento.
+O motor foi fixado à caixa utilizando **dois parafusos M3 × 8 mm**.
 
-Essa folga permite pequenos deslocamentos laterais do motor durante a montagem, possibilitando ajustar sua posição até obter o alinhamento adequado entre o eixo do motor, o acoplador e o fuso T8×2.
+Os furos destinados a esses parafusos foram feitos com diâmetro maior que o estritamente necessário, criando uma pequena folga ao redor dos parafusos.
 
-Foram utilizadas **arruelas nos parafusos de fixação** para aumentar a área de apoio sobre os furos com folga. Dessa forma, após encontrar a posição adequada do motor, os parafusos podem ser apertados mantendo o conjunto na posição ajustada.
+Essa folga permite pequenos deslocamentos do motor durante a montagem. Dessa forma, sua posição pode ser ajustada até obter o melhor alinhamento possível entre o eixo do motor, o acoplador e o fuso T8×2.
 
-Antes do aperto definitivo, a posição do motor deve ser ajustada até que seu eixo esteja adequadamente alinhado ao conjunto de transmissão.
+Foram utilizadas **arruelas nos dois parafusos M3** para aumentar a área de apoio sobre os furos com folga. As arruelas permitem que os parafusos sejam apertados adequadamente depois que o motor é colocado na posição desejada, mantendo o ajuste realizado.
+
+Antes do aperto definitivo, o motor deve ser reposicionado conforme necessário até que seu eixo esteja adequadamente alinhado ao conjunto de transmissão.
 
 ![Ajuste de alinhamento do motor](images/motor-shaft-alignment.jpg)
 
-*Detalhe da montagem do NEMA 17. A abertura central já existente na caixa é utilizada para a passagem do eixo, enquanto a folga nos furos dos parafusos permite ajustar a posição do motor para o alinhamento com o fuso.*
+*Detalhe da fixação do NEMA 17. A abertura já existente na caixa é utilizada para a passagem do eixo, enquanto a folga nos furos dos dois parafusos M3 permite ajustar a posição do motor.*
 
 ### 4.3 Adaptação do acoplamento
 
@@ -132,13 +137,13 @@ O alinhamento entre o eixo do motor, o acoplador e o fuso é importante para o f
 
 O desalinhamento pode introduzir esforço lateral, vibração, aumento da resistência mecânica e irregularidades durante o deslocamento.
 
-O motor deve ser inicialmente instalado sem o aperto definitivo dos parafusos de fixação.
+Para realizar o alinhamento, os dois parafusos M3 × 8 mm devem permanecer parcialmente soltos.
 
-A folga existente nos **furos dos parafusos de fixação do motor** permite pequenos deslocamentos do conjunto para realizar o alinhamento.
+A folga existente nos furos de fixação permite pequenos deslocamentos do motor. Sua posição pode então ser ajustada até que o eixo esteja adequadamente alinhado ao acoplador e ao fuso.
 
-Com os parafusos ainda parcialmente soltos, a posição do motor pode ser ajustada até que seu eixo fique alinhado ao acoplador e ao fuso. As arruelas mantêm uma superfície de apoio suficiente sobre os furos com folga, permitindo o aperto dos parafusos após a definição da posição.
+Após encontrar a posição adequada, os dois parafusos podem ser apertados. As arruelas aumentam a área de apoio sobre os furos com folga e permitem manter o motor firmemente preso na posição definida.
 
-Após a centralização e verificação do alinhamento, os parafusos de fixação do motor e do acoplador podem ser apertados definitivamente.
+Após a centralização e verificação do alinhamento, também deve ser verificado o aperto do acoplador.
 
 ![Visão geral do acoplamento do motor](images/motor-coupling-overview.jpg)
 
@@ -162,11 +167,28 @@ A câmera é instalada sobre o carro móvel do C-Beam utilizando uma placa de li
 
 *Placa de liberação rápida Ulanzi U-KA2 instalada sobre o carro móvel do trilho.*
 
-A base do sistema de liberação rápida é fixada diretamente sobre a placa do carro do trilho.
+A base do sistema de liberação rápida é fixada diretamente sobre a placa do carro utilizando **um parafuso fotográfico de 1/4" × 12 mm**.
 
 O sistema permite instalar e remover a câmera sem desmontar os demais componentes do Macro Rail.
 
 Outros sistemas de fixação podem ser utilizados desde que sejam mecanicamente compatíveis com o carro do trilho e proporcionem fixação adequada e estável para a câmera utilizada.
+
+### 5.1 Fixação de acessórios ao trilho
+
+O perfil do conjunto também pode ser utilizado como ponto de montagem para acessórios.
+
+Para isso são utilizadas **porcas T compatíveis com perfil de alumínio 2020 e canal de 6 mm**, associadas a parafusos **M5**.
+
+Esses elementos de fixação são independentes do mecanismo de movimentação e podem ser utilizados conforme a configuração necessária.
+
+Entre as aplicações possíveis estão:
+
+- instalação de uma base ou sapata Arca-Swiss para fixação do trilho em um tripé;
+- instalação de suportes de iluminação;
+- instalação de braços ou suportes auxiliares;
+- fixação de outros acessórios compatíveis.
+
+A quantidade de porcas T e o comprimento dos parafusos M5 dependem do acessório instalado.
 
 ## 6. Verificação mecânica
 
@@ -175,7 +197,8 @@ Antes de conectar e operar o sistema eletrônico, deve-se verificar manualmente 
 Verifique:
 
 - fixação da caixa de alumínio ao C-Beam;
-- fixação do motor NEMA 17;
+- fixação dos dois parafusos M3 × 8 mm do motor;
+- posicionamento adequado das arruelas;
 - alinhamento entre o eixo do motor, o acoplador e o fuso;
 - posicionamento da bucha de cobre;
 - fixação do acoplador;
@@ -183,13 +206,14 @@ Verifique:
 - rotação livre do fuso;
 - movimentação livre do carro;
 - ausência de pontos de travamento ao longo do curso;
-- fixação do sistema de liberação rápida;
+- fixação da placa de liberação rápida;
+- aperto do parafuso fotográfico de 1/4";
 - estabilidade da câmera sobre o carro;
-- aperto dos elementos de fixação.
+- aperto dos demais elementos de fixação.
 
 Caso seja percebido aumento de resistência ou irregularidade durante o movimento, o alinhamento do motor deve ser verificado novamente.
 
-Pequenos ajustes podem ser realizados afrouxando parcialmente os parafusos de fixação do motor, reposicionando-o utilizando a folga disponível nos furos de montagem e realizando novamente o aperto após o alinhamento.
+Pequenos ajustes podem ser realizados afrouxando parcialmente os dois parafusos M3, reposicionando o motor utilizando a folga disponível nos furos de montagem e realizando novamente o aperto após o alinhamento.
 
 ## 7. Adaptações do projeto
 
@@ -202,10 +226,12 @@ A integração mecânica realizada para esta versão inclui, entre outras adapta
 - utilização da caixa elétrica de alumínio 4×2" como suporte do motor e proteção do acoplamento;
 - adaptação da caixa aos pontos de fixação existentes no C-Beam;
 - aproveitamento de uma abertura lateral já existente na caixa para a passagem do eixo do motor;
-- utilização de furos de fixação com folga para permitir pequenos ajustes de posicionamento e alinhamento do motor;
-- utilização de arruelas para aumentar a área de apoio dos parafusos sobre os furos com folga e permitir o aperto após o posicionamento;
+- utilização de dois parafusos M3 × 8 mm para fixação do motor;
+- utilização de furos com folga para permitir pequenos ajustes de posicionamento e alinhamento;
+- utilização de arruelas para aumentar a área de apoio dos parafusos sobre os furos com folga;
 - utilização de uma bucha de cobre para compatibilizar o eixo do motor com o acoplador;
-- integração da placa de liberação rápida ao carro do trilho.
+- integração da placa de liberação rápida ao carro do trilho através de parafuso fotográfico de 1/4";
+- utilização dos canais do perfil para instalação opcional de acessórios através de porcas T e parafusos M5.
 
 Essas adaptações, juntamente com a configuração do conjunto e sua integração ao firmware e sistema eletrônico do **Arandu Stack Macro Rail**, são documentadas neste repositório para facilitar a reprodução, estudo e modificação do equipamento.
 
@@ -239,7 +265,10 @@ The main mechanical components used in this assembly are:
 - approximately 1 mm thick copper bushing;
 - 4×2" aluminum electrical box;
 - Ulanzi U-KA2 quick-release plate;
-- screws, washers, and other mounting hardware required for assembly.
+- 2 M3 × 8 mm screws;
+- 2 washers for the M3 screws;
+- 1 photographic 1/4" × 12 mm screw;
+- T-nuts for 2020 aluminum profile with 6 mm slot and M5 screws, as required for accessory mounting.
 
 The complete project component list is available in [`../materials.md`](../materials.md).
 
@@ -287,19 +316,21 @@ This method uses the C-Beam assembly itself as a positioning reference and does 
 
 The NEMA 17 was positioned on the aluminum enclosure using one of the **existing side openings of the electrical box** for the passage of the motor shaft.
 
-This opening is an original feature of the electrical enclosure and was repurposed in this assembly to allow the motor shaft to enter the enclosure, where it connects to the lead screw through the coupling system.
+This opening is an original feature of the electrical enclosure and allows the motor shaft to enter the enclosure, where it connects to the lead screw through the coupling system.
 
-Four mounting holes corresponding to the motor mounting points were drilled in the enclosure. These holes were made slightly larger than strictly required for the mounting screws, providing a small amount of positional clearance.
+The motor is attached to the enclosure using **two M3 × 8 mm screws**.
 
-This clearance allows small lateral adjustments of the motor during assembly, making it possible to align the motor shaft with the coupler and the T8×2 lead screw.
+The mounting holes for these screws were drilled slightly larger than strictly required, creating a small amount of clearance around the screws.
 
-**Washers were installed on the mounting screws** to increase the bearing area over the enlarged holes. Once the motor is correctly positioned, the screws can therefore be tightened while maintaining the selected alignment.
+This clearance allows small positional adjustments of the motor during assembly, making it possible to align the motor shaft with the coupler and the T8×2 lead screw.
 
-Before final tightening, the motor position should be adjusted until its shaft is properly aligned with the transmission assembly.
+**Washers are used with both M3 screws** to increase the bearing area over the enlarged mounting holes. Once the desired motor position has been established, the screws can therefore be tightened while maintaining the selected alignment.
+
+Before final tightening, the motor should be repositioned as required until its shaft is properly aligned with the transmission assembly.
 
 ![Motor alignment adjustment](images/motor-shaft-alignment.jpg)
 
-*Detail of the NEMA 17 mounting. The existing central opening in the enclosure is used for shaft passage, while clearance in the mounting screw holes allows the motor position to be adjusted for alignment with the lead screw.*
+*Detail of the NEMA 17 mounting. The existing opening in the enclosure is used for shaft passage, while clearance in the two M3 mounting holes allows the motor position to be adjusted.*
 
 ### 4.3 Coupling Adaptation
 
@@ -335,13 +366,13 @@ Alignment between the motor shaft, coupler, and lead screw is important for prop
 
 Misalignment may introduce lateral loads, vibration, increased mechanical resistance, and irregular movement.
 
-The motor should initially be installed without fully tightening its mounting screws.
+For alignment, the two M3 × 8 mm mounting screws should remain partially loose.
 
-The clearance provided by the **motor mounting screw holes** allows small positional adjustments to be made during alignment.
+The clearance in the mounting holes allows small positional adjustments of the motor. Its position can then be adjusted until the shaft is properly aligned with the coupler and lead screw.
 
-With the mounting screws partially loosened, the motor can be repositioned until its shaft is aligned with the coupler and lead screw. The washers provide sufficient bearing area over the enlarged mounting holes, allowing the screws to be tightened after the desired position has been established.
+Once the correct position has been established, the two screws can be tightened. The washers increase the bearing area over the enlarged holes and allow the motor to remain securely fixed in the selected position.
 
-Once alignment has been checked, the motor mounting screws and coupler screws can be fully tightened.
+After alignment and tightening of the motor, the coupler attachment should also be checked.
 
 ![Motor coupling overview](images/motor-coupling-overview.jpg)
 
@@ -365,11 +396,28 @@ The camera is attached to the C-Beam moving carriage using an **Ulanzi U-KA2 qui
 
 *Ulanzi U-KA2 quick-release plate installed on the moving rail carriage.*
 
-The quick-release base is mounted directly on the rail carriage plate.
+The quick-release base is attached directly to the carriage plate using a **1/4" × 12 mm photographic screw**.
 
 The system allows the camera to be installed and removed without disassembling the other Macro Rail components.
 
 Other camera mounting systems may be used provided that they are mechanically compatible with the rail carriage and provide adequate and stable support for the camera being used.
+
+### 5.1 Accessory Mounting
+
+The rail profile can also be used as a mounting point for accessories.
+
+For this purpose, **T-nuts compatible with 2020 aluminum profiles with 6 mm slots** are used together with **M5 screws**.
+
+These mounting points are independent of the rail movement mechanism and can be used according to the required configuration.
+
+Possible applications include:
+
+- installation of an Arca-Swiss base or plate for mounting the rail on a tripod;
+- lighting supports;
+- auxiliary arms or brackets;
+- other compatible accessories.
+
+The number of T-nuts and the required M5 screw length depend on the accessory being installed.
 
 ## 6. Mechanical Inspection
 
@@ -378,7 +426,8 @@ Before connecting and operating the electronic system, the mechanical assembly s
 Check:
 
 - attachment of the aluminum enclosure to the C-Beam;
-- NEMA 17 motor mounting;
+- tightening of the two M3 × 8 mm motor screws;
+- correct positioning of the washers;
 - alignment between the motor shaft, coupler, and lead screw;
 - copper bushing positioning;
 - coupler attachment;
@@ -386,13 +435,14 @@ Check:
 - free rotation of the lead screw;
 - free movement of the carriage;
 - absence of mechanical binding throughout the travel;
-- quick-release system mounting;
+- quick-release plate mounting;
+- tightening of the 1/4" photographic screw;
 - camera stability on the carriage;
-- mounting hardware tightness.
+- tightness of the remaining mounting hardware.
 
 If increased resistance or irregular movement is detected, the motor alignment should be checked again.
 
-Small adjustments can be made by partially loosening the motor mounting screws, repositioning the motor using the clearance available in the mounting holes, and tightening the screws again after alignment.
+Small adjustments can be made by partially loosening the two M3 screws, repositioning the motor using the clearance available in the mounting holes, and tightening the screws again after alignment.
 
 ## 7. Project Adaptations
 
@@ -405,9 +455,11 @@ Mechanical integration implemented in this version includes, among other adaptat
 - use of a 4×2" aluminum electrical box as the motor support and coupling enclosure;
 - adaptation of the enclosure to the existing C-Beam mounting points;
 - use of an existing side opening in the electrical enclosure for motor shaft passage;
-- use of mounting holes with additional clearance to allow small motor positioning and alignment adjustments;
-- use of washers to increase the bearing area of the screws over the enlarged mounting holes and allow tightening after positioning;
+- use of two M3 × 8 mm screws for motor mounting;
+- use of enlarged mounting holes to allow small motor positioning and alignment adjustments;
+- use of washers to increase the screw bearing area over the enlarged mounting holes;
 - use of a copper bushing to match the motor shaft to the coupler;
-- integration of the quick-release plate with the rail carriage.
+- integration of the quick-release plate with the rail carriage using a 1/4" photographic screw;
+- optional use of the profile slots for accessory mounting using T-nuts and M5 screws.
 
 These adaptations, together with the overall system configuration and its integration with the **Arandu Stack Macro Rail** firmware and electronic system, are documented in this repository to facilitate reproduction, study, and modification of the equipment.
