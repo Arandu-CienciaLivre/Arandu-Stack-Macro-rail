@@ -2,6 +2,8 @@
 
 [Português](README.md) | [English](README_EN.md)
 
+[![DOI](https://zenodo.org/badge/1351705239.svg)](https://doi.org/10.5281/zenodo.22212884)
+
 ## About the Project
 
 The **Arandu Stack Macro Rail** is a precision motorized rail developed for macro photography and automated **focus stacking** sequences.
@@ -161,7 +163,6 @@ If the **Arandu Stack Macro Rail** is used in scientific research, academic work
 
 Citation metadata is available in the [`CITATION.cff`](CITATION.cff) file.
 
-A permanent DOI reference will be provided for released versions of the project.
 
 ## License
 
