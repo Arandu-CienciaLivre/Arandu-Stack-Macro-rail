@@ -28,8 +28,10 @@ Os principais elementos são:
 - voltímetro;
 - chave geral ON/OFF;
 - bateria Li-ion 3S4P;
-- conector P4 de alimentação/carga;
+- conector P4 de alimentação/carga no módulo de controle;
 - conector de 8 vias para interligação entre o módulo de controle e o trilho;
+- conector P2 para disparo da câmera no trilho;
+- conector P4 para alimentação auxiliar no trilho;
 - dois fins de curso NC opcionais.
 
 ---
@@ -164,12 +166,37 @@ São utilizados os contatos:
 
 O relé permanece aberto durante o funcionamento normal e fecha durante o comando de disparo.
 
-A conexão com a câmera é realizada através de um cabo dedicado:
+O circuito de disparo é transportado pelas vias 5 e 6 do cabo de 8 vias entre o módulo de controle e o trilho.
 
-- conector P1 no lado da câmera;
-- conector P4 no lado do controlador.
+Na caixa instalada no trilho, essas duas vias são conectadas a uma saída **P2**, utilizada exclusivamente para o disparo da câmera.
+
+O cabo externo de disparo deve possuir:
+
+- conector **P2** no lado do trilho;
+- conector de disparo remoto específico para o modelo de câmera utilizado na outra extremidade.
+
+Portanto, o P2 constitui o padrão de conexão de disparo no lado do Arandu, enquanto o conector da extremidade da câmera pode variar de acordo com o equipamento utilizado.
+
+### 6.1 Configuração utilizada com a Canon EOS T5i
+
+Na configuração documentada neste projeto, utilizada com uma **Canon EOS T5i**, o cabo possui:
+
+```text
+TRILHO                         CÂMERA
+
+P2 ─────────── cabo ─────────── P1
+```
+
+Assim:
+
+- **P2** = conector de disparo no lado do Arandu;
+- **P1** = conector utilizado no lado da Canon EOS T5i.
+
+Para utilizar outra câmera, a extremidade correspondente à câmera deve ser adaptada ao padrão de disparo remoto exigido pelo modelo.
 
 O sistema pode executar tanto disparos convencionais quanto manter o contato fechado durante exposições no modo Bulb.
+
+> **O conector P2 do trilho é destinado exclusivamente ao circuito de disparo e não deve receber alimentação elétrica.**
 
 ---
 
@@ -187,7 +214,7 @@ O conjunto utilizado possui quatro condutores externos, organizados como:
 - dois condutores de entrada;
 - dois condutores de saída.
 
-A entrada da bateria é utilizada para conexão ao conector P4 destinado à alimentação/carga.
+A entrada da bateria é utilizada para conexão ao conector **P4 localizado no módulo de controle**, destinado à alimentação/carga.
 
 Na saída:
 
@@ -195,6 +222,17 @@ Na saída:
 - o positivo passa pela chave geral ON/OFF antes de alimentar a distribuição VCC do controlador.
 
 O carregador utilizado deve ser apropriado para bateria Li-ion 3S, com tensão final de carga de **12,6 V**.
+
+### 7.1 Identificação dos conectores de alimentação
+
+O sistema possui dois conectores P4 com funções distintas:
+
+- **P4 no módulo de controle:** entrada de alimentação/carga;
+- **P4 no trilho:** saída de alimentação auxiliar.
+
+A posição física dos conectores determina sua função.
+
+O conector P2 existente no trilho é reservado ao disparo da câmera e não faz parte do circuito de alimentação.
 
 ---
 
@@ -234,17 +272,46 @@ A distribuição funcional utilizada é:
 
 Os quatro primeiros condutores transportam as conexões das duas bobinas do motor.
 
-As vias 5 e 6 transportam o circuito de disparo da câmera.
+As vias 5 e 6 transportam o circuito de disparo da câmera até a saída P2 localizada no trilho.
 
-As vias 7 e 8 disponibilizam alimentação proveniente da bateria para acessórios instalados no trilho.
+As vias 7 e 8 transportam alimentação proveniente da bateria até a saída P4 localizada no trilho.
 
 A polaridade específica das vias 7 e 8 deve seguir a montagem elétrica adotada no equipamento.
+
+### 10.1 Organização funcional
+
+```text
+MÓDULO DE CONTROLE
+│
+├── P4
+│   └── entrada de alimentação/carga
+│
+└── conector de 8 vias
+         │
+         │
+         │ 1–4 → motor
+         │ 5–6 → disparo
+         │ 7–8 → alimentação auxiliar
+         │
+         ▼
+TRILHO / CAIXA DO MOTOR
+│
+├── conector de 8 vias
+│
+├── P2
+│   └── saída de disparo da câmera
+│
+└── P4
+    └── saída de alimentação auxiliar
+```
 
 ---
 
 ## 11. Alimentação auxiliar pelo cabo de 8 vias
 
-As vias de alimentação auxiliar permitem transportar a alimentação da bateria até o conjunto móvel sem a necessidade de um segundo cabo externo.
+As vias de alimentação auxiliar permitem transportar a alimentação da bateria até o conjunto instalado no trilho sem a necessidade de um segundo cabo externo.
+
+No trilho, essas vias são conectadas a uma saída **P4**, disponibilizando alimentação próxima à câmera.
 
 Essa saída pode ser utilizada para alimentar acessórios, desde que sejam respeitadas suas exigências elétricas.
 
@@ -252,15 +319,17 @@ Quando o equipamento conectado exigir tensão diferente da bateria, deve ser uti
 
 Um exemplo é a alimentação de uma câmera através de:
 
-**bateria do sistema → conversor apropriado → alimentação da câmera**
+**bateria do sistema → vias 7–8 → P4 do trilho → conversor apropriado → alimentação da câmera**
 
 No protótipo, essa arquitetura pode ser utilizada com um módulo de alimentação compatível e uma dummy battery adequada à câmera.
 
+> A saída P4 do trilho disponibiliza alimentação proveniente do sistema. A tensão e a polaridade devem ser verificadas antes da conexão de qualquer equipamento.
+
 ---
 
-## 12. Conectores de 8 vias
+## 12. Conectores externos e interligação
 
-O sistema utiliza dois pares de conectores de 8 pinos do tipo utilizado na montagem do protótipo.
+O módulo de controle e o trilho são interligados através de conectores removíveis de **8 vias**, do tipo utilizado na montagem do protótipo.
 
 Eles permitem separar fisicamente:
 
@@ -271,6 +340,49 @@ Eles permitem separar fisicamente:
 A utilização de conectores removíveis facilita transporte, manutenção e substituição dos módulos.
 
 Antes de conectar o cabo, deve-se verificar a correspondência da pinagem nos dois lados.
+
+### 12.1 Conectores do módulo de controle
+
+O módulo possui externamente:
+
+| Conector | Função |
+|---|---|
+| 8 vias | Interligação com o trilho |
+| P4 | Entrada de alimentação/carga |
+
+### 12.2 Conectores do trilho
+
+A caixa instalada no trilho possui:
+
+| Conector | Função |
+|---|---|
+| 8 vias | Interligação com o módulo de controle |
+| P2 | Saída de disparo da câmera |
+| P4 | Saída de alimentação auxiliar |
+
+### 12.3 Convenção adotada
+
+Para reduzir a possibilidade de conexões incorretas, a versão documentada utiliza a seguinte convenção:
+
+```text
+8 VIAS = INTERLIGAÇÃO MÓDULO ↔ TRILHO
+
+P2 = DISPARO DA CÂMERA
+
+P4 = ALIMENTAÇÃO
+```
+
+O cabo externo entre o trilho e a câmera segue:
+
+```text
+P2 (Arandu) → conector específico da câmera
+```
+
+Na configuração com a Canon EOS T5i:
+
+```text
+P2 (Arandu) → P1 (Canon EOS T5i)
+```
 
 ---
 
@@ -300,10 +412,14 @@ Antes da primeira energização:
 4. verificar as conexões STEP, DIR e ENABLE;
 5. verificar a conexão do LCD e do encoder;
 6. verificar o circuito de disparo da câmera;
-7. verificar a continuidade do cabo de 8 vias;
-8. verificar se os fins de curso NC estão corretamente conectados;
-9. caso os fins de curso não sejam utilizados, verificar se **as duas entradas estão conectadas ao GND por jumpers**;
-10. verificar se não existem curtos entre alimentação e GND.
+7. verificar se o P2 do trilho está conectado exclusivamente ao circuito de disparo;
+8. verificar a continuidade do cabo de 8 vias;
+9. verificar a correspondência das vias nas duas extremidades do cabo;
+10. verificar a polaridade da alimentação auxiliar nas vias 7 e 8;
+11. verificar a tensão presente no P4 de alimentação auxiliar antes de conectar acessórios;
+12. verificar se os fins de curso NC estão corretamente conectados;
+13. caso os fins de curso não sejam utilizados, verificar se **as duas entradas estão conectadas ao GND por jumpers**;
+14. verificar se não existem curtos entre alimentação e GND.
 
 O conector IEC existente no gabinete atual é proveniente de uma configuração anterior do protótipo e **não faz parte do sistema elétrico atual**.
 
@@ -333,8 +449,10 @@ The main components are:
 - voltmeter;
 - main ON/OFF switch;
 - 3S4P Li-ion battery;
-- P4 power/charging connector;
-- 8-wire interconnection cable;
+- P4 power/charging connector on the control module;
+- 8-wire interconnection cable between the control module and rail;
+- P2 camera shutter connector on the rail;
+- P4 auxiliary power connector on the rail;
 - two optional NC endstop switches.
 
 ---
@@ -469,12 +587,37 @@ The following relay contacts are used:
 
 The relay remains open during normal operation and closes during a shutter command.
 
-A dedicated cable connects the controller to the camera:
+The shutter circuit is carried through wires 5 and 6 of the 8-wire cable between the control module and the rail.
 
-- P1 connector on the camera side;
-- P4 connector on the controller side.
+At the enclosure installed on the rail, these two wires are connected to a **P2 output**, used exclusively for camera triggering.
+
+The external shutter cable must have:
+
+- a **P2 connector** on the rail side;
+- the appropriate remote shutter connector for the camera model on the other end.
+
+P2 therefore serves as the standardized shutter connection on the Arandu side, while the connector at the camera end may vary depending on the equipment being used.
+
+### 6.1 Configuration used with the Canon EOS T5i
+
+In the configuration documented for this project using a **Canon EOS T5i**, the cable is:
+
+```text
+RAIL                           CAMERA
+
+P2 ─────────── cable ───────── P1
+```
+
+Therefore:
+
+- **P2** = shutter connector on the Arandu side;
+- **P1** = connector used on the Canon EOS T5i side.
+
+For another camera, the camera-side end must be adapted to the remote shutter connection required by that model.
 
 The system supports both conventional shutter pulses and extended contact closure for Bulb exposures.
+
+> **The P2 connector on the rail is exclusively intended for the shutter circuit and must not receive electrical power.**
 
 ---
 
@@ -492,7 +635,7 @@ The battery assembly used in the prototype has four external conductors:
 - two input conductors;
 - two output conductors.
 
-The battery input is connected to the P4 power/charging connector.
+The battery input is connected to the **P4 connector located on the control module**, used for power/charging.
 
 On the output side:
 
@@ -500,6 +643,17 @@ On the output side:
 - positive passes through the main ON/OFF switch before reaching the controller VCC distribution.
 
 The charger must be suitable for a 3S Li-ion battery pack with a final charging voltage of **12.6 V**.
+
+### 7.1 Power connector identification
+
+The system contains two P4 connectors with different functions:
+
+- **P4 on the control module:** power/charging input;
+- **P4 on the rail:** auxiliary power output.
+
+Their physical location determines their function.
+
+The P2 connector on the rail is reserved for camera triggering and is not part of the power circuit.
 
 ---
 
@@ -539,17 +693,46 @@ The functional allocation is:
 
 The first four conductors carry the two stepper motor coil connections.
 
-Wires 5 and 6 carry the camera trigger circuit.
+Wires 5 and 6 carry the camera shutter circuit to the P2 output located on the rail.
 
-Wires 7 and 8 provide battery-derived power for accessories installed on the rail.
+Wires 7 and 8 carry battery-derived power to the P4 auxiliary output located on the rail.
 
 The specific polarity of wires 7 and 8 must follow the wiring arrangement used in the equipment.
+
+### 10.1 Functional organization
+
+```text
+CONTROL MODULE
+│
+├── P4
+│   └── power/charging input
+│
+└── 8-wire connector
+         │
+         │
+         │ 1–4 → motor
+         │ 5–6 → shutter
+         │ 7–8 → auxiliary power
+         │
+         ▼
+RAIL / MOTOR ENCLOSURE
+│
+├── 8-wire connector
+│
+├── P2
+│   └── camera shutter output
+│
+└── P4
+    └── auxiliary power output
+```
 
 ---
 
 ## 11. Auxiliary power through the 8-wire cable
 
-The auxiliary power wires allow battery power to be carried to the moving assembly without requiring a second external cable.
+The auxiliary power wires allow battery power to be carried to the rail assembly without requiring a second external cable.
+
+At the rail, these wires are connected to a **P4 output**, making power available near the camera.
 
 This output may be used to power accessories provided their electrical requirements are respected.
 
@@ -557,15 +740,17 @@ If the connected equipment requires a voltage different from the battery voltage
 
 For example:
 
-**system battery → appropriate converter → camera power**
+**system battery → wires 7–8 → rail P4 → appropriate converter → camera power**
 
 In the prototype, this architecture can be used with a compatible power module and a suitable camera dummy battery.
 
+> The rail P4 output provides power derived from the system. Voltage and polarity must be verified before connecting any equipment.
+
 ---
 
-## 12. 8-pin connectors
+## 12. External connectors and interconnection
 
-The system uses two pairs of 8-pin connectors of the type adopted in the prototype.
+The control module and rail are interconnected through removable **8-wire connectors** of the type used in the prototype.
 
 They allow physical separation between:
 
@@ -576,6 +761,49 @@ They allow physical separation between:
 Removable connectors simplify transportation, maintenance, and module replacement.
 
 Pin correspondence on both sides must be verified before connecting the cable.
+
+### 12.1 Control module connectors
+
+The control module externally provides:
+
+| Connector | Function |
+|---|---|
+| 8-wire | Interconnection with the rail |
+| P4 | Power/charging input |
+
+### 12.2 Rail connectors
+
+The enclosure installed on the rail provides:
+
+| Connector | Function |
+|---|---|
+| 8-wire | Interconnection with the control module |
+| P2 | Camera shutter output |
+| P4 | Auxiliary power output |
+
+### 12.3 Adopted convention
+
+To reduce the possibility of incorrect connections, the documented version uses the following convention:
+
+```text
+8-WIRE = CONTROL MODULE ↔ RAIL INTERCONNECTION
+
+P2 = CAMERA SHUTTER
+
+P4 = POWER
+```
+
+The external cable between the rail and camera follows:
+
+```text
+P2 (Arandu) → camera-specific connector
+```
+
+For the Canon EOS T5i configuration:
+
+```text
+P2 (Arandu) → P1 (Canon EOS T5i)
+```
 
 ---
 
@@ -605,9 +833,13 @@ Before first power-up:
 4. verify STEP, DIR, and ENABLE connections;
 5. verify LCD and encoder connections;
 6. verify the camera trigger circuit;
-7. verify continuity of the 8-wire cable;
-8. verify that NC endstop switches are correctly connected;
-9. if endstops are not used, verify that **both endstop inputs are jumpered to GND**;
-10. verify that there are no shorts between power and GND.
+7. verify that the rail P2 is connected exclusively to the shutter circuit;
+8. verify continuity of the 8-wire cable;
+9. verify wire correspondence at both ends of the cable;
+10. verify auxiliary power polarity on wires 7 and 8;
+11. verify the voltage present at the auxiliary P4 before connecting accessories;
+12. verify that NC endstop switches are correctly connected;
+13. if endstops are not used, verify that **both endstop inputs are jumpered to GND**;
+14. verify that there are no shorts between power and GND.
 
 The IEC connector present on the current enclosure belongs to an earlier prototype configuration and **is not part of the current electrical system**.
