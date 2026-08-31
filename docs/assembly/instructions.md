@@ -60,7 +60,7 @@ O conjunto C-Beam utilizado é um componente comercial. O projeto Arandu Stack M
 
 O movimento do trilho é realizado por um motor de passo **NEMA 17**.
 
-Para integrar o motor ao conjunto C-Beam foi utilizada uma **caixa elétrica de alumínio 4×2"**, modificada para funcionar como estrutura de suporte e proteção do sistema de acoplamento.
+Para integrar o motor ao conjunto C-Beam foi utilizada uma **caixa elétrica de alumínio 4×2"**, modificada para funcionar como estrutura de suporte do motor e proteção do sistema de acoplamento.
 
 ![Conjunto do motor e caixa de acoplamento](images/motor-enclosure-side.jpg)
 
@@ -82,17 +82,21 @@ Esse método permite utilizar a própria geometria do conjunto C-Beam como refer
 
 ### 4.2 Fixação e centralização do motor
 
-O NEMA 17 foi posicionado sobre a face oposta da caixa, com seu eixo aproximadamente alinhado ao eixo do fuso T8×2.
+O NEMA 17 foi posicionado sobre a face da caixa de alumínio utilizando uma das **aberturas laterais já existentes na caixa** para a passagem do eixo do motor.
 
-Foi realizada uma abertura com folga ao redor da passagem do eixo do motor. Essa folga permite pequenos ajustes de posição durante a montagem, facilitando a centralização do eixo do motor em relação ao fuso.
+Essa abertura faz parte originalmente da própria caixa elétrica e, nesta adaptação, foi aproveitada para permitir a passagem do eixo do motor até o interior da caixa, onde é realizado o acoplamento com o fuso.
+
+Para a fixação do motor foram realizados quatro furos correspondentes aos seus pontos de montagem. Esses furos foram feitos com diâmetro maior que o estritamente necessário para a passagem dos parafusos, criando uma pequena folga de posicionamento.
+
+Essa folga permite pequenos deslocamentos laterais do motor durante a montagem, possibilitando ajustar sua posição até obter o alinhamento adequado entre o eixo do motor, o acoplador e o fuso T8×2.
+
+Foram utilizadas **arruelas nos parafusos de fixação** para aumentar a área de apoio sobre os furos com folga. Dessa forma, após encontrar a posição adequada do motor, os parafusos podem ser apertados mantendo o conjunto na posição ajustada.
+
+Antes do aperto definitivo, a posição do motor deve ser ajustada até que seu eixo esteja adequadamente alinhado ao conjunto de transmissão.
 
 ![Ajuste de alinhamento do motor](images/motor-shaft-alignment.jpg)
 
-*Folga na abertura de montagem utilizada para permitir pequenos ajustes de posicionamento e centralização do motor.*
-
-O motor foi fixado à caixa utilizando parafusos e **arruelas**. As arruelas auxiliam na fixação e permitem o ajuste do conjunto durante o processo de alinhamento.
-
-Antes do aperto definitivo dos parafusos, a posição do motor deve ser ajustada até que seu eixo esteja alinhado ao fuso.
+*Detalhe da montagem do NEMA 17. A abertura central já existente na caixa é utilizada para a passagem do eixo, enquanto a folga nos furos dos parafusos permite ajustar a posição do motor para o alinhamento com o fuso.*
 
 ### 4.3 Adaptação do acoplamento
 
@@ -128,9 +132,13 @@ O alinhamento entre o eixo do motor, o acoplador e o fuso é importante para o f
 
 O desalinhamento pode introduzir esforço lateral, vibração, aumento da resistência mecânica e irregularidades durante o deslocamento.
 
-O motor deve ser inicialmente instalado sem o aperto definitivo dos parafusos. A folga existente na abertura da caixa permite pequenos deslocamentos para realizar o alinhamento.
+O motor deve ser inicialmente instalado sem o aperto definitivo dos parafusos de fixação.
 
-Após a centralização, os parafusos de fixação do motor e do acoplador podem ser apertados.
+A folga existente nos **furos dos parafusos de fixação do motor** permite pequenos deslocamentos do conjunto para realizar o alinhamento.
+
+Com os parafusos ainda parcialmente soltos, a posição do motor pode ser ajustada até que seu eixo fique alinhado ao acoplador e ao fuso. As arruelas mantêm uma superfície de apoio suficiente sobre os furos com folga, permitindo o aperto dos parafusos após a definição da posição.
+
+Após a centralização e verificação do alinhamento, os parafusos de fixação do motor e do acoplador podem ser apertados definitivamente.
 
 ![Visão geral do acoplamento do motor](images/motor-coupling-overview.jpg)
 
@@ -168,7 +176,7 @@ Verifique:
 
 - fixação da caixa de alumínio ao C-Beam;
 - fixação do motor NEMA 17;
-- alinhamento entre o eixo do motor e o fuso;
+- alinhamento entre o eixo do motor, o acoplador e o fuso;
 - posicionamento da bucha de cobre;
 - fixação do acoplador;
 - ausência de deformação lateral excessiva do acoplador;
@@ -181,7 +189,7 @@ Verifique:
 
 Caso seja percebido aumento de resistência ou irregularidade durante o movimento, o alinhamento do motor deve ser verificado novamente.
 
-Pequenos ajustes podem ser realizados afrouxando a fixação do motor, reposicionando-o dentro da folga disponível na abertura da caixa e realizando novamente o aperto.
+Pequenos ajustes podem ser realizados afrouxando parcialmente os parafusos de fixação do motor, reposicionando-o utilizando a folga disponível nos furos de montagem e realizando novamente o aperto após o alinhamento.
 
 ## 7. Adaptações do projeto
 
@@ -193,8 +201,9 @@ A integração mecânica realizada para esta versão inclui, entre outras adapta
 
 - utilização da caixa elétrica de alumínio 4×2" como suporte do motor e proteção do acoplamento;
 - adaptação da caixa aos pontos de fixação existentes no C-Beam;
-- abertura com folga para permitir o ajuste de alinhamento do motor;
-- utilização de arruelas para auxiliar na montagem e ajuste;
+- aproveitamento de uma abertura lateral já existente na caixa para a passagem do eixo do motor;
+- utilização de furos de fixação com folga para permitir pequenos ajustes de posicionamento e alinhamento do motor;
+- utilização de arruelas para aumentar a área de apoio dos parafusos sobre os furos com folga e permitir o aperto após o posicionamento;
 - utilização de uma bucha de cobre para compatibilizar o eixo do motor com o acoplador;
 - integração da placa de liberação rápida ao carro do trilho.
 
@@ -276,17 +285,21 @@ This method uses the C-Beam assembly itself as a positioning reference and does 
 
 ### 4.2 Motor Mounting and Alignment
 
-The NEMA 17 was positioned on the opposite face of the enclosure, with its shaft approximately aligned with the T8×2 lead screw axis.
+The NEMA 17 was positioned on the aluminum enclosure using one of the **existing side openings of the electrical box** for the passage of the motor shaft.
 
-An opening with additional clearance around the motor shaft was made in the enclosure. This clearance allows small positional adjustments during assembly, making it easier to center the motor shaft relative to the lead screw.
+This opening is an original feature of the electrical enclosure and was repurposed in this assembly to allow the motor shaft to enter the enclosure, where it connects to the lead screw through the coupling system.
+
+Four mounting holes corresponding to the motor mounting points were drilled in the enclosure. These holes were made slightly larger than strictly required for the mounting screws, providing a small amount of positional clearance.
+
+This clearance allows small lateral adjustments of the motor during assembly, making it possible to align the motor shaft with the coupler and the T8×2 lead screw.
+
+**Washers were installed on the mounting screws** to increase the bearing area over the enlarged holes. Once the motor is correctly positioned, the screws can therefore be tightened while maintaining the selected alignment.
+
+Before final tightening, the motor position should be adjusted until its shaft is properly aligned with the transmission assembly.
 
 ![Motor alignment adjustment](images/motor-shaft-alignment.jpg)
 
-*Clearance around the mounting opening allows small positional adjustments for motor alignment.*
-
-The motor was secured to the enclosure using screws and **washers**. The washers assist with mounting and allow adjustment during the alignment process.
-
-Before fully tightening the mounting screws, the motor position should be adjusted until its shaft is aligned with the lead screw.
+*Detail of the NEMA 17 mounting. The existing central opening in the enclosure is used for shaft passage, while clearance in the mounting screw holes allows the motor position to be adjusted for alignment with the lead screw.*
 
 ### 4.3 Coupling Adaptation
 
@@ -322,9 +335,13 @@ Alignment between the motor shaft, coupler, and lead screw is important for prop
 
 Misalignment may introduce lateral loads, vibration, increased mechanical resistance, and irregular movement.
 
-The motor should initially be installed without fully tightening its mounting screws. The clearance around the opening in the enclosure allows small positional adjustments for alignment.
+The motor should initially be installed without fully tightening its mounting screws.
 
-Once the assembly is centered, the motor mounting screws and coupler screws can be tightened.
+The clearance provided by the **motor mounting screw holes** allows small positional adjustments to be made during alignment.
+
+With the mounting screws partially loosened, the motor can be repositioned until its shaft is aligned with the coupler and lead screw. The washers provide sufficient bearing area over the enlarged mounting holes, allowing the screws to be tightened after the desired position has been established.
+
+Once alignment has been checked, the motor mounting screws and coupler screws can be fully tightened.
 
 ![Motor coupling overview](images/motor-coupling-overview.jpg)
 
@@ -362,7 +379,7 @@ Check:
 
 - attachment of the aluminum enclosure to the C-Beam;
 - NEMA 17 motor mounting;
-- alignment between the motor shaft and lead screw;
+- alignment between the motor shaft, coupler, and lead screw;
 - copper bushing positioning;
 - coupler attachment;
 - absence of excessive lateral deformation of the coupler;
@@ -375,7 +392,7 @@ Check:
 
 If increased resistance or irregular movement is detected, the motor alignment should be checked again.
 
-Small adjustments can be made by loosening the motor mounting screws, repositioning the motor within the available clearance in the enclosure opening, and tightening the assembly again.
+Small adjustments can be made by partially loosening the motor mounting screws, repositioning the motor using the clearance available in the mounting holes, and tightening the screws again after alignment.
 
 ## 7. Project Adaptations
 
@@ -387,8 +404,9 @@ Mechanical integration implemented in this version includes, among other adaptat
 
 - use of a 4×2" aluminum electrical box as the motor support and coupling enclosure;
 - adaptation of the enclosure to the existing C-Beam mounting points;
-- clearance around the motor shaft opening to allow alignment adjustment;
-- use of washers to assist mounting and adjustment;
+- use of an existing side opening in the electrical enclosure for motor shaft passage;
+- use of mounting holes with additional clearance to allow small motor positioning and alignment adjustments;
+- use of washers to increase the bearing area of the screws over the enlarged mounting holes and allow tightening after positioning;
 - use of a copper bushing to match the motor shaft to the coupler;
 - integration of the quick-release plate with the rail carriage.
 
